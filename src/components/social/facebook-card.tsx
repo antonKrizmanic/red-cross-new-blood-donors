@@ -5,7 +5,7 @@ import { SocialCard } from "./social-card";
 export function FacebookCard() {
     return (
         <SocialCard
-            href="https://www.facebook.com/CrveniKrizBuje"
+            href="https://www.facebook.com/CrvenikrizBuje"
             ctaText="Pridružite nam se na Facebooku"
             icon={<FacebookIcon className="size-10 fill-white" />}
             bgColor="bg-gradient-to-br from-blue-50 to-cyan-50 border-blue-200"

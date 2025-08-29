@@ -5,7 +5,7 @@ export function InstagramCard() {
     return (
 
         <SocialCard
-            href="https://www.instagram.com/crvenikriz_buje/"
+            href="https://www.instagram.com/crvenikrizbuje"
             ctaText="Pridružite nam se na Instagramu"
             icon={<InstagramIcon className="size-10 fill-white" />}
             bgColor="bg-gradient-to-br from-red-50 to-orange-50 border-red-200"
