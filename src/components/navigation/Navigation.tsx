@@ -1,6 +1,7 @@
 'use client'
 
 import { X } from 'lucide-react'
+import Image from 'next/image'
 import { useEffect, useState } from 'react'
 
 export function Navigation() {
@@ -71,8 +72,8 @@ export function Navigation() {
                 <div className="flex items-center justify-between h-16">
                     {/* Logo - hidden on mobile */}
                     <div className="hidden md:flex items-center space-x-3">
-                        <div className="w-8 h-8 bg-gradient-to-r from-red-900 to-red-800 rounded-full flex items-center justify-center">
-                            <span className="text-white font-bold text-sm">CK</span>
+                        <div className="w-8 h-8 rounded-full shring-0 flex items-center justify-center">
+                            <Image src="/logo-transparent.webp" alt="Crveni Križ Buje" width={32} height={32} />
                         </div>
                         <span className="font-semibold text-gray-900">
                             Crveni Križ Buje
@@ -141,7 +142,15 @@ export function Navigation() {
                 {/* Menu Content */}
                 <div className="absolute inset-0 bg-white min-h-screen">
                     {/* Header */}
-                    <div className="flex items-center justify-end p-6 bg-white">
+                    <div className="flex items-center justify-between p-6 bg-white">
+                        <div className="flex items-center space-x-3">
+                            <div className="w-8 h-8 rounded-full shring-0 flex items-center justify-center">
+                                <Image src="/logo-transparent.webp" alt="Crveni Križ Buje" width={32} height={32} />
+                            </div>
+                            <span className="font-semibold text-gray-900">
+                                Crveni Križ Buje
+                            </span>
+                        </div>
                         <button
                             onClick={() => setIsMobileMenuOpen(false)}
                             className="p-2 rounded-md text-gray-700 hover:text-red-800 transition-colors duration-200"
@@ -153,7 +162,7 @@ export function Navigation() {
                     {/* Navigation Links */}
                     <div className="p-6 space-y-6 bg-white">
                         <button
-                            onClick={() => handleMobileNavClick()}
+                            onClick={() => scrollToTop()}
                             className="w-full text-left text-2xl font-semibold text-gray-900 hover:text-red-800 transition-colors duration-200 py-4"
                         >
                             Naslovnica
