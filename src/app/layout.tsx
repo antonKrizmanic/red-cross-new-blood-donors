@@ -20,14 +20,14 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL('https://your-domain.com'), // Replace with your actual domain
+  metadataBase: new URL('https://www.crvenikrizbujedarivatelji.gdckapp.com'), // Replace with your actual domain
   alternates: {
     canonical: '/',
   },
   openGraph: {
     type: 'website',
     locale: 'hr_HR',
-    url: 'https://your-domain.com', // Replace with your actual domain
+    url: 'https://www.crvenikrizbujedarivatelji.gdckapp.com', // Replace with your actual domain
     title: 'HCK GDCK Buje - Daruj krv, spasi život',
     description: 'Stranica Hrvatskog Crvenog križa, Gradskog društva Crvenog križa Buje za promicanje darivanja krvi na području Bujštine (Umag, Buje, Novigrad).',
     siteName: 'Hrvatski Crveni Križ - GDCK Buje',
