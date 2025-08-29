@@ -1,5 +1,7 @@
+import { BackToTop, Navigation, ScrollProgress } from '@/components/navigation'
 import {
   ContactSection,
+  FAQSection,
   Footer,
   HeroSection,
   JoinCommunitySection,
@@ -33,12 +35,16 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-red-50 via-white to-red-50">
+      <ScrollProgress />
+      <Navigation />
       <HeroSection />
       <WhyDonateSection />
       <JoinCommunitySection />
       <UpcomingEventsSection actions={actions} />
+      <FAQSection />
       <ContactSection />
       <Footer />
+      <BackToTop />
     </div>
   )
 }

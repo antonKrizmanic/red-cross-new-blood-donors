@@ -3,7 +3,7 @@ import { Mail, Phone } from 'lucide-react'
 
 export function ContactSection() {
     return (
-        <section className="py-20 px-6 bg-white">
+        <section id="kontakt" className="py-20 px-6 bg-white">
             <div className="max-w-4xl mx-auto text-center">
                 <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
                     Kontakt

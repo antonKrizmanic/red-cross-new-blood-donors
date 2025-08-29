@@ -1,4 +1,5 @@
 export { ContactSection } from './ContactSection'
+export { FAQSection } from './FAQSection'
 export { Footer } from './Footer'
 export { HeroSection } from './HeroSection'
 export { JoinCommunitySection } from './JoinCommunitySection'

@@ -23,7 +23,7 @@ export function HeroSection() {
                     <div>
                         <Button
                             size="lg"
-                            className="bg-white text-red-700 hover:bg-red-50 px-8 py-4 text-lg font-semibold rounded-full shadow-2xl hover:shadow-red-500/25 transition-all duration-300 hover:scale-105"
+                            className="bg-white text-red-700 hover:bg-red-50 px-8 py-7 text-lg font-semibold rounded-full shadow-2xl hover:shadow-red-500/25 transition-all duration-300 hover:scale-105"
                             onClick={() => document.getElementById('zasto-dariti-krv')?.scrollIntoView({ behavior: 'smooth' })}
                         >
                             Zašto darivati krvi
@@ -36,15 +36,15 @@ export function HeroSection() {
                             className="mt-4 bg-white text-red-700 hover:bg-red-50 px-8 py-4 text-lg font-semibold rounded-full shadow-2xl hover:shadow-red-500/25 transition-all duration-300 hover:scale-105"
                             onClick={() => document.getElementById('pridruzi')?.scrollIntoView({ behavior: 'smooth' })}
                         >
-                            Već si dao/la krv
+                            Već daruješ krv
                             <ArrowRight className="ml-2 h-5 w-5" />
                         </Button>
                     </div>
-                    <div>
+                    {/* <div>
                         <div className="inline-flex items-center gap-2 px-4 py-2 mt-4 bg-white/15 backdrop-blur-sm rounded-full border border-white/25 shadow-lg">
                             <span className="text-white font-medium text-sm">Hrvatski Crveni križ - Gradsko društvo Crvenog križa Buje</span>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
 
