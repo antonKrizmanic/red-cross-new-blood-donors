@@ -101,7 +101,7 @@ export function FAQSection() {
                             {/* Answer */}
                             <div
                                 className={`overflow-hidden transition-all duration-300 ease-in-out ${openItems.includes(item.id)
-                                    ? 'max-h-96 opacity-100'
+                                    ? 'min-h-24 opacity-100'
                                     : 'max-h-0 opacity-0'
                                     }`}
                             >
