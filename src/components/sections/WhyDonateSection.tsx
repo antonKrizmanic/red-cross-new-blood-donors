@@ -10,7 +10,7 @@ export function WhyDonateSection() {
                     className="h-full w-full bg-center bg-cover md:bg-fixed opacity-30 responsive-bg-image"
                 />
             </div>
-            <div className="relative z-10 max-w-6xl mx-auto">
+            <div className="relative z-10 container mx-auto">
                 <div className="text-center mb-16">
                     <div className="mx-auto mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-red-100 text-red-600">
                         <Droplet className="h-7 w-7" />

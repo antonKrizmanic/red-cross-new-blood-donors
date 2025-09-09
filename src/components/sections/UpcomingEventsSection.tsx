@@ -1,10 +1,13 @@
 import { Card, CardContent } from '@/components/ui/shadcn/card'
-import { Calendar } from 'lucide-react'
+import { Calendar, Clock, MapPin } from 'lucide-react'
 
 interface Action {
     date: Date
     title: string
-    description: string
+    description: string,
+    time?: string | null,
+    location?: string | null,
+    address: string | null
 }
 
 interface UpcomingEventsSectionProps {
@@ -35,6 +38,23 @@ export function UpcomingEventsSection({ actions }: UpcomingEventsSectionProps) {
                                         </div>
                                         <div>
                                             <h3 className="text-xl font-semibold text-gray-900">{action.title}</h3>
+                                            {action.time && (
+                                            <div className="flex items-center gap-2 text-gray-700">
+                                                <Clock className="w-4 h-4" />
+                                                <span>{action.time}</span>
+                                            </div>
+)}
+{action.location && action.address && (
+                                            <div className="space-y-1">
+                                                <div className="flex items-start gap-2 text-gray-900">
+                                                    <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0" />
+                                                    <div>
+                                                        <div className="font-medium">{action.location}</div>
+                                                        <div className="text-sm text-gray-600">{action.address}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            )}
                                             <p className="text-gray-600">{action.description}</p>
                                         </div>
                                     </div>

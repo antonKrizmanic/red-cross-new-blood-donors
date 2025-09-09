@@ -101,6 +101,12 @@ export function Navigation() {
                             Pridruži se
                         </button>
                         <button
+                            onClick={() => scrollToSection('proces')}
+                            className="text-gray-700 hover:text-red-800 transition-colors duration-200 font-medium"
+                        >
+                            Proces
+                        </button>
+                        <button
                             onClick={() => scrollToSection('sljedece-akcije')}
                             className="bg-gradient-to-r from-red-900 to-red-800 hover:from-red-800 hover:to-red-700 text-white px-4 py-2 rounded-full transition-all duration-200 hover:scale-105 font-medium"
                         >
@@ -178,6 +184,12 @@ export function Navigation() {
                             className="w-full text-left text-2xl font-semibold text-gray-900 hover:text-red-800 transition-colors duration-200 py-4"
                         >
                             Pridruži se
+                        </button>
+                        <button
+                            onClick={() => handleMobileNavClick('proces')}
+                            className="w-full text-left text-2xl font-semibold text-gray-900 hover:text-red-800 transition-colors duration-200 py-4"
+                        >
+                            Proces
                         </button>
                         <button
                             onClick={() => handleMobileNavClick('sljedece-akcije')}

@@ -17,10 +17,10 @@ export function JoinCommunitySection() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-red-900/80 via-red-800/70 to-red-900/80" />
             </div>
-            <div className="relative z-10 max-w-6xl mx-auto">
+            <div className="relative z-10 container mx-auto">
                 <div className="text-center mb-12">
-                    <h2 className="text-4xl font-bold text-white mb-4">Pridruži se zajednici</h2>
-                    <p className="text-xl text-white/90 max-w-2xl mx-auto">
+                    <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">Pridruži se zajednici</h2>
+                    <p className="text-xl text-white/90 max-w-3xl mx-auto">
                         Budi dio naše zajednice darivatelja krvi i primi obavijesti o nadolazećim akcijama darivanja krvi.
                         Otvoreno je za sve - i za one koji već daruju i za one koji se tek planiraju pridružiti.
                     </p>
@@ -33,7 +33,7 @@ export function JoinCommunitySection() {
 
                 <div className="grid grid-cols-1 gap-8 md:gap-10 items-start">
                     {/* Left: Value props */}
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
                         <div className="flex items-start gap-4">
                             <div className="flex h-12 w-12 items-center justify-center rounded-full shrink-0 bg-white/15">
                                 <BellRing className="h-6 w-6" />
@@ -64,7 +64,7 @@ export function JoinCommunitySection() {
                     </div>
 
                     {/* Right: Channels */}
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
                         <ApplicationCard />
                         <WhatsAppCard />
                         <ViberCard />

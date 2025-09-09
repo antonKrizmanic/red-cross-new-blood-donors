@@ -25,7 +25,7 @@ export function SocialCard({
         <a href={href} target="_blank" rel="noopener noreferrer">
             <Card
                 className={cn(
-                    'h-full flex flex-row rounded-xl items-center justify-between max-w-lg shadow hover:shadow-xl transition-all duration-300',
+                    'h-full flex flex-row rounded-xl items-center justify-between shadow hover:shadow-xl transition-all duration-300',
                     bgColor,
                 )}>
                 <CardHeader className={cn('flex flex-row gap-4 items-center')}>
