@@ -16,8 +16,8 @@ export default function Home() {
       date: new Date('2025-09-16'),
       title: '16.09.2025. – Grad Buje',
       time: '09:00 - 17:00 (pauza 13:00 - 14:00)',
-      location: 'Zajednica Talijana Umag',
-      address: 'Brolo 1, Umag',
+      location: 'Zajednica Talijana Buje',
+      address: 'Trg Josipa Broza Tita 17',
       description: 'Za točnu lokaciju prati naše objave na društvenim mrežama i lokalnim medijima.',
     },
     {
@@ -38,10 +38,10 @@ export default function Home() {
     },
     {
       date: new Date('2025-12-29'),
-      title: '29.12.2025. – Grad Buje',
+      title: '29.12.2025. – Grad Umag',
       time: '09:00 - 17:00 (pauza 13:00 - 14:00)',
-      location: 'Sportska dvorana',
-      address: null,
+      location: 'Zajednica Talijana Umag',
+      address: "Brolo 1, Umag",
       description: 'Za točnu lokaciju prati naše objave na društvenim mrežama i lokalnim medijima.',
     }
   ]

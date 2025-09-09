@@ -39,23 +39,26 @@ export function UpcomingEventsSection({ actions }: UpcomingEventsSectionProps) {
                                         <div>
                                             <h3 className="text-xl font-semibold text-gray-900">{action.title}</h3>
                                             {action.time && (
-                                            <div className="flex items-center gap-2 text-gray-700">
-                                                <Clock className="w-4 h-4" />
-                                                <span>{action.time}</span>
-                                            </div>
-)}
-{action.location && action.address && (
-                                            <div className="space-y-1">
-                                                <div className="flex items-start gap-2 text-gray-900">
-                                                    <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                                                    <div>
-                                                        <div className="font-medium">{action.location}</div>
-                                                        <div className="text-sm text-gray-600">{action.address}</div>
+                                                <div className="flex items-center gap-2 text-gray-700">
+                                                    <Clock className="w-4 h-4" />
+                                                    <span>{action.time}</span>
+                                                </div>
+                                            )}
+                                            {action.location && action.address && (
+                                                <div className="space-y-1">
+                                                    <div className="flex items-start gap-2 text-gray-900">
+                                                        <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0" />
+                                                        <div>
+                                                            <div className="font-medium">{action.location}</div>
+                                                            <div className="text-sm text-gray-600">{action.address}</div>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
                                             )}
-                                            <p className="text-gray-600">{action.description}</p>
+                                            {(!action.address || !action.location || !action.time) && (
+                                                <p className="text-gray-600">{action.description}</p>
+                                            )}
+
                                         </div>
                                     </div>
                                 </div>
