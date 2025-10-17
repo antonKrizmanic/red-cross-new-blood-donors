@@ -1,5 +1,5 @@
+import { Clock, Coffee, Droplets, UserCheck } from "lucide-react";
 import { ImageWithFallback } from "../ImageWithFallback";
-import { Clock, UserCheck, Droplets, Coffee } from "lucide-react";
 
 export function ProcessSection() {
 	const steps = [

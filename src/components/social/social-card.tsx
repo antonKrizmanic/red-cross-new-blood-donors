@@ -1,6 +1,6 @@
-import { cn } from "@/lib/utils";
 import { ChevronRight } from "lucide-react";
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
+import { cn } from "@/lib/utils";
 import { Card, CardHeader } from "../ui/shadcn/card";
 
 export type SocialCardProps = {

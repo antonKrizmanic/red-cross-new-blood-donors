@@ -1,5 +1,5 @@
-import { Card, CardContent } from "@/components/ui/shadcn/card";
 import { Mail, Phone } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/shadcn/card";
 
 export function ContactSection() {
 	return (

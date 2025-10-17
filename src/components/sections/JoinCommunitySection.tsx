@@ -1,3 +1,4 @@
+import { BellRing, Calendar, CheckCircle2 } from "lucide-react";
 import { ApplicationCard } from "@/components/social/application-card";
 import { FacebookCard } from "@/components/social/facebook-card";
 import { InstagramCard } from "@/components/social/instagram-card";
@@ -5,7 +6,6 @@ import { ViberCard } from "@/components/social/viber-card";
 import { WebPageCard } from "@/components/social/web-page-card";
 import { WhatsAppCard } from "@/components/social/whats-app-card";
 import { Badge } from "@/components/ui/shadcn/badge";
-import { BellRing, Calendar, CheckCircle2 } from "lucide-react";
 
 export function JoinCommunitySection() {
 	return (

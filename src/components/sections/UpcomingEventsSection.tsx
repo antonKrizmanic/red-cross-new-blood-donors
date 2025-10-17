@@ -1,5 +1,5 @@
-import { Card, CardContent } from "@/components/ui/shadcn/card";
 import { Calendar, Clock, MapPin } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/shadcn/card";
 
 interface Action {
 	date: Date;

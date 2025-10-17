@@ -7,7 +7,7 @@
 		"dev:https": "next dev --turbopack --experimental-https -p 3005",
 		"build": "next build --turbopack",
 		"start": "next start",
-		"lint": "biome check .",
+		"lint": "biome check . --write",
 		"format": "biome format . --write"
 	},
 	"dependencies": {

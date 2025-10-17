@@ -1,6 +1,6 @@
 "use client";
-import { Button } from "@/components/ui/shadcn/button";
 import { ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/shadcn/button";
 
 export function HeroSection() {
 	return (

@@ -1,5 +1,5 @@
-import { Card, CardContent } from "@/components/ui/shadcn/card";
 import { Clock, Droplet, Gift, Heart, Shield } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/shadcn/card";
 
 export function WhyDonateSection() {
 	return (
