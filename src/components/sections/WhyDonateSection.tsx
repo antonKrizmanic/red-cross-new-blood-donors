@@ -17,10 +17,10 @@ export function WhyDonateSection() {
                         <Droplet className="h-7 w-7" />
                     </div>
                     <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-                        Zašto darivati krvi?
+                        Zašto darivati krv?
                     </h2>
                     <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                        Otkrijte kako vaše darivanje krvi može napraviti ogromnu
+                        Otkrijte kako vaše darivanje krvi može napraviti veliku
                         razliku
                     </p>
                 </div>

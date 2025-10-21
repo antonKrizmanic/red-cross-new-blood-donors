@@ -13,7 +13,7 @@ interface FAQItem {
 const faqData: FAQItem[] = [
     {
         id: 1,
-        question: 'Zašto darivati krvi?',
+        question: 'Zašto darivati krv?',
         answer: 'Krv nije moguće proizvesti, jedini izvor tog lijeka je čovjek – darivatelj krvi. Svakodnevno brojni bolesnici trebaju liječenje krvnim pripravcima, stoga, kako bi se osigurao dovoljan broj krvnih pripravaka, potrebno je uvijek imati dovoljan broj darivatelja. Darivati možete punu krv i/ili krvne sastojke na staničnom separatoru. Krvne sastojke možete darivati samo u HZTM-u, nakon što se više puta darivali punu krv.',
     },
     {
@@ -23,7 +23,7 @@ const faqData: FAQItem[] = [
     },
     {
         id: 3,
-        question: 'Kada darivati krvi?',
+        question: 'Kada darivati krv?',
         answer: 'Stanje zaliha doza krvi Vaše krvne grupe možete saznati na stranici Hrvatskog zavoda za transfuzijski medicinu. Ako su trenutačne zalihe krvi Vaše krvne grupe ispod oznake premale zalihe, molimo Vas darujte krv. Ako su trenutačne količine krvi Vaše krvne grupe iznad oznake prevelike zalihe, molimo Vas privremeno odgodite darivanje dok se zalihe Vaše krvne grupe ne smanje. Muškarci mogu darivati krv svaka 3 mjeseca (do 7 dana ranije), a žene svaka 4 mjeseca (do 7 dana ranije). Podatak o datumu prethodnog darivanja nalazi se u Vašoj Iskaznici darivatelja. Ako nemate Iskaznicu darivatelja taj podatak možete dobiti na broj telefona 01/4600-337.',
     },
     {
@@ -38,7 +38,7 @@ const faqData: FAQItem[] = [
     },
     {
         id: 6,
-        question: 'Smiju li tetovirane osobe darivati krvi?',
+        question: 'Smiju li tetovirane osobe darivati krv?',
         answer: 'Smiju, ukoliko nisu tetovirani zadnja 4 mjeseca.',
     },
     {
@@ -48,7 +48,7 @@ const faqData: FAQItem[] = [
     },
     {
         id: 8,
-        question: 'Zašto strani državljani ne mogu darivati krvi?',
+        question: 'Zašto strani državljani ne mogu darivati krv?',
         answer: 'Transfuzijska služba svake zemlje prati epidemiološko stanje u zemlji, prati uvijete života darivatelja i prema tim pokazateljima određuje kako i kojim testovima ispitivati krv darivatelja na prisutnost uzročnika zaraznih bolesti. Zbog toga svaka zemlja može biti sigurna samo u krv i krvne pripravke dobivene od darivatelja krvi u toj zemlji. Pravilnikom o krvi i krvnim sastojcima od 16. prosinca 1998. (NN 14/99) u čl. 9, u stavku 2 je propisano da darivatelj krvi mora biti državljanin Republike Hrvatske.',
     },
 ];

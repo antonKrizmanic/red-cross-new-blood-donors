@@ -30,7 +30,7 @@ export function HeroSection() {
                                     ?.scrollIntoView({ behavior: 'smooth' })
                             }
                         >
-                            Zašto darivati krvi
+                            Zašto darivati krv
                         </Button>
                     </div>
                     <div>

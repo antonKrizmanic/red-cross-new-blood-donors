@@ -16,7 +16,7 @@ export function Footer() {
                     Hrvatski Crveni Križ - Gradsko društvo Crvenog križa Buje
                 </h3>
                 <p className="text-gray-300 mb-6">
-                    Spašavamo živote zajedno - jedna kap krvi po kap
+                    Spašavamo živote zajedno - gradimo sigurnije društvo
                 </p>
                 <div className="border-t border-gray-800 pt-6">
                     <p className="text-gray-400 text-sm">
