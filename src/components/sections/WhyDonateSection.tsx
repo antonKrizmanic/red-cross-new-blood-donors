@@ -82,6 +82,9 @@ export function WhyDonateSection() {
                                 Besplatno dopunsko zdravstveno osiguranje i
                                 posebne povlastice
                             </p>
+                            <p className="mt-2">
+                                <a href="https://www.hck.hr/pogodnosti-za-clanove/12021" target="_blank" rel="noopener" className="text-red-500 hover:underline">Više o pogodnostima</a>
+                            </p>
                         </CardContent>
                     </Card>
                 </div>

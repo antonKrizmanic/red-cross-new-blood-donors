@@ -74,12 +74,12 @@ export function Navigation() {
                 <div className="flex items-center justify-between h-16">
                     {/* Logo - hidden on mobile */}
                     <div className="hidden md:flex items-center space-x-3">
-                        <div className="w-8 h-8 rounded-full shring-0 flex items-center justify-center">
+                        <div className="w-12 h-12 rounded-full shring-0 flex items-center justify-center">
                             <Image
                                 src="/logo-transparent.webp"
                                 alt="Crveni Križ Buje"
-                                width={32}
-                                height={32}
+                                width={64}
+                                height={64}
                             />
                         </div>
                         <span className="font-semibold text-gray-900">

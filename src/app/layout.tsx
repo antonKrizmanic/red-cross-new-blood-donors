@@ -45,9 +45,9 @@ export const metadata: Metadata = {
         siteName: 'Hrvatski Crveni Križ - GDCK Buje',
         images: [
             {
-                url: '/bloodDonation.webp', // You'll need to add this image to your public folder
-                width: 1200,
-                height: 630,
+                url: '/logo.webp', // You'll need to add this image to your public folder
+                width: 1024,
+                height: 1024,
                 alt: 'Hrvatski Crveni Križ GDCK Buje - Daruj krv, spasi život',
             },
         ],
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
         title: 'HCK GDCK Buje - Daruj krv, spasi život',
         description:
             'Stranica Hrvatskog Crvenog križa, Gradskog društva Crvenog križa Buje za promicanje darivanja krvi na području Bujštine (Umag, Buje, Novigrad).',
-        images: ['/bloodDonation.webp'], // Same image as Open Graph
+        images: ['/logo.webp'], // Same image as Open Graph
         creator: '@crvenikriz', // Replace with actual Twitter handle if available
     },
     robots: {

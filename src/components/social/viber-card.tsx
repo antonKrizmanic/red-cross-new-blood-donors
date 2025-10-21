@@ -4,7 +4,7 @@ import { SocialCard } from './social-card';
 export function ViberCard() {
     return (
         <SocialCard
-            href="https://chat.viber.com/en"
+            href="https://invite.viber.com/?g2=AQBwX6qBJ9VnL1WBfTnK6ZhDXlxnOPtLHoCSuxxVj089tyaNP34cpCzMZceI0dPu"
             ctaText="Pridružite nam se na Viber-u"
             icon={<ViberIcon className="size-10 fill-white" />}
             bgColor="bg-gradient-to-br from-purple-50 to-purple-100 border-purple-200"
