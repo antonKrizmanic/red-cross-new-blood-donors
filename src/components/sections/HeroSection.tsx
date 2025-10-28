@@ -1,5 +1,6 @@
 'use client';
 import { Button } from '@/components/ui/shadcn/button';
+import TypingText from '../ui/shadcn-io/typing-text';
 
 export function HeroSection() {
     return (
@@ -12,10 +13,18 @@ export function HeroSection() {
             {/* Hero Content */}
             <div className="relative z-10 text-center text-white px-6 max-w-4xl mx-auto">
                 <div className="animate-fade-in-up">
-                    <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight drop-shadow-2xl/70">
-                        Daruj krv,
-                        <span className="block text-red-200">spasi život</span>
-                    </h1>
+                    <TypingText
+                        text={[
+                            'Daruj krv, spasi život',
+                            'Daruj krv, spasi život'
+                        ]}
+                        typingSpeed={75}
+                        pauseDuration={1500}
+                        showCursor={false}                        
+                        cursorCharacter="|"
+                        className="text-5xl md:text-7xl font-bold mb-6 leading-tight drop-shadow-2xl/70"                        
+                        variableSpeed={{ min: 50, max: 120 }}
+                    />                    
                     <p className="text-xl md:text-2xl mb-8 text-red-100 max-w-2xl mx-auto leading-relaxed">
                         Pridružite se našoj zajednici darivatelja krvi i
                         pomozite spasiti živote
