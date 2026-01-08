@@ -18,7 +18,7 @@ export default function Home() {
             title: '16.01.2026. – Grad Novigrad',
             time: '09:00 - 17:00 (pauza 13:00 - 14:00)',
             location: 'Sportska dvorana',
-            address: null,
+            address: "Marketi 2",
             description:
                 'Za točnu lokaciju prati naše objave na društvenim mrežama i lokalnim medijima.',
         },
@@ -45,7 +45,7 @@ export default function Home() {
             title: '10.04.2026. – Grad Novigrad',
             time: '09:00 - 17:00 (pauza 13:00 - 14:00)',
             location: 'Sportska dvorana',
-            address: null,
+            address: "Marketi 2",
             description:
                 'Za točnu lokaciju prati naše objave na društvenim mrežama i lokalnim medijima.',
         },        
@@ -81,7 +81,7 @@ export default function Home() {
             title: '13.07.2026. – Grad Novigrad',
             time: '09:00 - 17:00 (pauza 13:00 - 14:00)',
             location: 'Sportska dvorana',
-            address: null,
+            address: "Marketi 2",
             description:
                 'Za točnu lokaciju prati naše objave na društvenim mrežama i lokalnim medijima.',
         },       
@@ -109,7 +109,7 @@ export default function Home() {
             title: '12.10.2026. – Grad Novigrad',
             time: '09:00 - 17:00 (pauza 13:00 - 14:00)',
             location: 'Sportska dvorana',
-            address: null,
+            address: "Marketi 2",
             description:
                 'Za točnu lokaciju prati naše objave na društvenim mrežama i lokalnim medijima.',
         },        
