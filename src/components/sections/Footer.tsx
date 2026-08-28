@@ -1,28 +1,25 @@
 import Image from 'next/image';
+import { footerContent } from '@/content/page-content';
 
 export function Footer() {
     return (
-        <footer className="bg-gray-900 text-white py-12 px-6">
-            <div className="max-w-4xl mx-auto text-center">
-                <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 shrink-0">
+        <footer className="site-footer">
+            <div className="site-footer__inner">
+                <div className="site-footer__brand">
                     <Image
                         src="/logo-transparent.webp"
                         alt="Crveni križ Buje"
-                        width={128}
-                        height={128}
+                        width={80}
+                        height={80}
                     />
+                    <h3>{footerContent.organization}</h3>
                 </div>
-                <h3 className="text-2xl font-bold mb-4">
-                    Hrvatski Crveni Križ - Gradsko društvo Crvenog križa Buje
-                </h3>
-                <p className="text-gray-300 mb-6">
-                    Spašavamo živote zajedno - gradimo sigurnije društvo
-                </p>
-                <div className="border-t border-gray-800 pt-6">
-                    <p className="text-gray-400 text-sm">
-                        © 2025 Hrvatski Crveni križ - Gradsko društvo Crvenog
-                        križa Buje. Sva prava pridržana.
-                    </p>
+                <p className="site-footer__tagline">{footerContent.tagline}</p>
+                <div className="site-footer__bottom">
+                    <p>{footerContent.copyright}</p>
+                    <a href="#pocetna" aria-label="Naslovnica">
+                        +
+                    </a>
                 </div>
             </div>
         </footer>

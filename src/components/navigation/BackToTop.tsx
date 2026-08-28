@@ -2,39 +2,36 @@
 
 import { ArrowUp } from 'lucide-react';
 import { useEffect, useState } from 'react';
-import { Button } from '@/components/ui/shadcn/button';
 
 export function BackToTop() {
     const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
+        let frame = 0;
+
         const handleScroll = () => {
-            const scrollTop = window.scrollY;
-            setIsVisible(scrollTop > 300); // Prikaži gumb nakon 300px scrolla
+            if (frame) return;
+            frame = window.requestAnimationFrame(() => {
+                frame = 0;
+                setIsVisible(window.scrollY > 300);
+            });
         };
 
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
+        handleScroll();
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+            if (frame) window.cancelAnimationFrame(frame);
+        };
     }, []);
 
-    const scrollToTop = () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth',
-        });
-    };
-
     return (
-        <Button
-            onClick={scrollToTop}
-            size="lg"
-            className={`fixed bottom-8 right-8 z-40 rounded-full shadow-lg transition-all duration-300 hover:scale-110 ${
-                isVisible
-                    ? 'opacity-100 translate-y-0'
-                    : 'opacity-0 translate-y-10 pointer-events-none'
-            } bg-gradient-to-r from-red-900 to-red-800 hover:from-red-800 hover:to-red-700 text-white`}
+        <a
+            href="#pocetna"
+            aria-label="Povratak na vrh"
+            className={`back-to-top ${isVisible ? 'is-visible' : ''}`}
         >
-            <ArrowUp className="h-5 w-5" />
-        </Button>
+            <ArrowUp aria-hidden="true" />
+        </a>
     );
 }

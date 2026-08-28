@@ -1,45 +1,67 @@
-import { Mail, Phone } from 'lucide-react';
-import { Card, CardContent } from '@/components/ui/shadcn/card';
+import { ArrowUpRight, Mail, Phone } from 'lucide-react';
+import { contactContent } from '@/content/page-content';
 
 export function ContactSection() {
     return (
-        <section id="kontakt" className="py-20 px-6 bg-white">
-            <div className="max-w-4xl mx-auto text-center">
-                <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                    Kontakt
-                </h2>
-                <p className="text-xl text-gray-600 mb-12">
-                    Javite nam se za sve informacije o darivanju krvi
-                </p>
+        <section
+            id="kontakt"
+            className="section-panel section-ink contact-section field-guide-lifeline field-guide-lifeline--red"
+        >
+            <div
+                className="section-symbol section-symbol--left"
+                aria-hidden="true"
+            >
+                +
+            </div>
+            <div className="section-container section-container--narrow">
+                <header className="section-heading section-heading--split">
+                    <div data-reveal>
+                        <p className="eyebrow eyebrow--light">
+                            <span />
+                            06
+                        </p>
+                        <h2 className="display-title display-title--light">
+                            {contactContent.title}
+                        </h2>
+                    </div>
+                    <p
+                        className="section-intro section-intro--light"
+                        data-reveal
+                    >
+                        {contactContent.description}
+                    </p>
+                </header>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-                    <Card className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-0 shadow-lg">
-                        <CardContent className="p-8">
-                            <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6 shrink-0 group-hover:bg-blue-200 transition-colors duration-300">
-                                <Phone className="h-8 w-8 text-blue-600" />
-                            </div>
-                            <h3 className="text-xl font-semibold mb-2 text-gray-900">
-                                Telefon
-                            </h3>
-                            <p className="text-lg text-gray-600">
-                                +385 (0)52 772 446
-                            </p>
-                        </CardContent>
-                    </Card>
+                <div className="contact-grid">
+                    <a
+                        href={contactContent.phoneHref}
+                        className="contact-link"
+                        data-reveal
+                    >
+                        <span className="contact-link__icon">
+                            <Phone aria-hidden="true" />
+                        </span>
+                        <span className="contact-link__copy">
+                            <span>{contactContent.phoneLabel}</span>
+                            <strong>{contactContent.phone}</strong>
+                        </span>
+                        <ArrowUpRight aria-hidden="true" />
+                    </a>
 
-                    <Card className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-0 shadow-lg">
-                        <CardContent className="p-8">
-                            <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6 shrink-0 group-hover:bg-green-200 transition-colors duration-300">
-                                <Mail className="h-8 w-8 text-green-600" />
-                            </div>
-                            <h3 className="text-xl font-semibold mb-2 text-gray-900">
-                                Email
-                            </h3>
-                            <p className="text-lg text-gray-600">
-                                info@crvenikrizbuje.hr
-                            </p>
-                        </CardContent>
-                    </Card>
+                    <a
+                        href={contactContent.emailHref}
+                        className="contact-link"
+                        data-reveal
+                    >
+                        <span className="contact-link__icon">
+                            <Mail aria-hidden="true" />
+                        </span>
+                        <span className="contact-link__copy">
+                            <span>{contactContent.emailLabel}</span>
+                            <strong>{contactContent.email}</strong>
+                        </span>
+                        <ArrowUpRight aria-hidden="true" />
+                    </a>
                 </div>
             </div>
         </section>

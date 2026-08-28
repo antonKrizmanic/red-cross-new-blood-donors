@@ -1,52 +1,37 @@
-import { ChevronRight } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import type { ReactNode } from 'react';
-import { cn } from '@/lib/utils';
-import { Card, CardHeader } from '../ui/shadcn/card';
+import type { ChannelIcon, CommunityChannel } from '@/content/page-content';
+import { FacebookIcon } from '../ui/icons/facebook-icon';
+import { InstagramIcon } from '../ui/icons/instagram-icon';
+import SmartphoneIcon from '../ui/icons/smartphone-icon';
+import { ViberIcon } from '../ui/icons/viber-icon';
+import WebPageIcon from '../ui/icons/web-page-icon';
+import { WhatsAppIcon } from '../ui/icons/whats-app-icon';
 
-export type SocialCardProps = {
-    href: string;
-    ctaText: string;
-    icon: ReactNode;
-    bgColor: string;
-    bgIconColor: string;
-    navigateIconColor: string;
+const iconMap: Record<ChannelIcon, ReactNode> = {
+    application: <SmartphoneIcon />,
+    whatsapp: <WhatsAppIcon />,
+    viber: <ViberIcon />,
+    facebook: <FacebookIcon />,
+    instagram: <InstagramIcon />,
+    website: <WebPageIcon />,
 };
 
-export function SocialCard({
-    href,
-    ctaText,
-    icon,
-    bgColor,
-    bgIconColor,
-    navigateIconColor,
-}: SocialCardProps) {
+type SocialCardProps = {
+    channel: CommunityChannel;
+};
+
+export function SocialCard({ channel }: SocialCardProps) {
     return (
-        <a href={href} target="_blank" rel="noopener noreferrer">
-            <Card
-                className={cn(
-                    'h-full flex flex-row rounded-xl items-center justify-between shadow hover:shadow-xl transition-all duration-300',
-                    bgColor,
-                )}
-            >
-                <CardHeader className={cn('flex flex-row gap-4 items-center')}>
-                    <div
-                        className={cn(
-                            'size-16 shrink-0 rounded-full flex items-center justify-center shadow-lg',
-                            bgIconColor,
-                        )}
-                    >
-                        {icon}
-                    </div>
-                </CardHeader>
-                <div className="text-lg font-bold leading-tight flex-1 ml-8">
-                    {ctaText}
-                </div>
-                <div className="pt-2 mr-4">
-                    <ChevronRight
-                        className={cn('size-8 shrink-0', navigateIconColor)}
-                    />
-                </div>
-            </Card>
+        <a
+            href={channel.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`social-card social-card--${channel.accent}`}
+        >
+            <span className="social-card__icon">{iconMap[channel.icon]}</span>
+            <span className="social-card__label">{channel.ctaText}</span>
+            <ArrowUpRight className="social-card__arrow" aria-hidden="true" />
         </a>
     );
 }
