@@ -69,18 +69,31 @@ export type FAQItem = {
     id: number;
     question: string;
     answer: string;
+    link?: {
+        label: string;
+        href: string;
+    };
+};
+
+export type EligibilityQuestion = {
+    question: string;
+    options: {
+        label: string;
+        /** Why the visitor probably cannot donate if they pick this answer. */
+        stopReason?: string;
+    }[];
 };
 
 export const navigationItems: NavigationItem[] = [
     { label: 'Naslovnica', href: '#pocetna' },
     { label: 'Zašto darivati', href: '#zasto-dariti-krv' },
-    { label: 'Pridruži se', href: '#pridruzi' },
     { label: 'Proces', href: '#proces' },
     {
         label: 'Sljedeće akcije',
         href: '#sljedece-akcije',
         featured: true,
     },
+    { label: 'Pridruži se', href: '#pridruzi' },
     { label: 'Pitanja', href: '#pitanja' },
     { label: 'Kontakt', href: '#kontakt' },
 ];
@@ -204,7 +217,7 @@ export const processContent = {
     title: 'Proces darivanja',
     description:
         'Proces donacije je jednostavan, siguran i traje manje od sat vremena od početka do kraja.',
-    preparationTitle: 'Prije Dolaska',
+    preparationTitle: 'Prije dolaska',
     preparationItems: [
         'Pojedite zdrav obrok i ostanite hidrirani',
         'Dobro se naspavajte',
@@ -234,9 +247,109 @@ export const processSteps: ProcessStep[] = [
     },
 ];
 
+export const bloodSupplyLink = {
+    label: 'Zalihe krvi – KBC Rijeka',
+    href: 'https://kbc-rijeka.hr/zalihe-krvi/',
+};
+
+export const eligibilityContent = {
+    title: 'Mogu li darivati?',
+    description:
+        'Odgovorite na nekoliko kratkih pitanja i provjerite možete li darivati krv.',
+    disclaimer:
+        'Ova provjera je samo informativna. Konačnu odluku donosi liječnik na akciji.',
+    stepLabel: 'Pitanje',
+    stepSeparator: 'od',
+    backLabel: 'Natrag',
+    restartLabel: 'Ponovi provjeru',
+    passTitle: 'Vjerojatno možete darivati krv',
+    passDescription: 'Pridružite nam se na jednoj od sljedećih akcija.',
+    passCtaLabel: 'Sljedeće akcije',
+    stopTitle: 'Trenutačno vjerojatno ne možete darivati krv',
+    stopCtaLabel: 'Kontaktirajte nas',
+};
+
+export const eligibilityQuestions: EligibilityQuestion[] = [
+    {
+        question: 'Imate li između 18 i 65 godina?',
+        options: [
+            { label: 'Da' },
+            {
+                label: 'Ne',
+                stopReason:
+                    'Krv mogu darivati osobe u dobi od 18 do 65 godina.',
+            },
+        ],
+    },
+    {
+        question: 'Imate li više od 55 kilograma?',
+        options: [
+            { label: 'Da' },
+            {
+                label: 'Ne',
+                stopReason:
+                    'Krv mogu darivati osobe tjelesne težine iznad 55 kilograma.',
+            },
+        ],
+    },
+    {
+        question: 'Jeste li dobrog općeg zdravstvenog stanja?',
+        options: [
+            { label: 'Da' },
+            {
+                label: 'Ne',
+                stopReason:
+                    'Krv mogu darivati osobe dobrog općeg zdravstvenog stanja. Ako niste sigurni, javite nam se.',
+            },
+        ],
+    },
+    {
+        question: 'Jeste li se tetovirali u zadnja 4 mjeseca?',
+        options: [
+            { label: 'Ne' },
+            {
+                label: 'Da',
+                stopReason:
+                    'Možete darivati krv kada prođu 4 mjeseca od tetoviranja.',
+            },
+        ],
+    },
+    {
+        question:
+            'Je li od vašeg zadnjeg darivanja prošlo najmanje 3 mjeseca (muškarci) odnosno 4 mjeseca (žene)?',
+        options: [
+            { label: 'Da' },
+            { label: 'Darujem prvi put' },
+            {
+                label: 'Ne',
+                stopReason:
+                    'Muškarci mogu darivati krv svaka 3 mjeseca, a žene svaka 4 mjeseca (do 7 dana ranije).',
+            },
+        ],
+    },
+    {
+        question: 'Jeste li državljanin Republike Hrvatske?',
+        options: [
+            { label: 'Da' },
+            {
+                label: 'Ne',
+                stopReason:
+                    'Darivatelj krvi mora biti državljanin Republike Hrvatske.',
+            },
+        ],
+    },
+];
+
 export const eventsContent = {
     title: 'Sljedeće akcije darivanja',
     description: 'Planirajte svoj doprinos i pridružite nam se',
+    emptyTitle: 'Novi termini uskoro',
+    emptyDescription:
+        'Termini sljedećih akcija još nisu potvrđeni. Pridružite se našoj zajednici i javit ćemo vam čim budu objavljeni.',
+    emptyCtaLabel: 'Pridruži se',
+    addToCalendarLabel: 'Dodaj u kalendar',
+    googleCalendarLabel: 'Google Kalendar',
+    calendarFileLabel: 'Apple / Outlook',
 };
 
 export const donationActions: DonationAction[] = [
@@ -359,6 +472,15 @@ export const donationActions: DonationAction[] = [
     },
 ];
 
+const ONE_DAY_MS = 24 * 60 * 60 * 1000;
+
+/** An action stays listed through its whole day, not just until midnight UTC. */
+export function getUpcomingActions(now = Date.now()) {
+    return donationActions.filter(
+        (action) => action.date.getTime() + ONE_DAY_MS > now,
+    );
+}
+
 export const faqContent = {
     title: 'Često postavljena pitanja',
     description:
@@ -373,27 +495,29 @@ export const faqItems: FAQItem[] = [
     {
         id: 1,
         question: 'Zašto darivati krv?',
-        answer: 'Krv nije moguće proizvesti, jedini izvor tog lijeka je čovjek – darivatelj krvi. Svakodnevno brojni bolesnici trebaju liječenje krvnim pripravcima, stoga, kako bi se osigurao dovoljan broj krvnih pripravaka, potrebno je uvijek imati dovoljan broj darivatelja. Darivati možete punu krv i/ili krvne sastojke na staničnom separatoru. Krvne sastojke možete darivati samo u HZTM-u, nakon što se više puta darivali punu krv.',
+        answer: 'Krv nije moguće proizvesti, jedini izvor tog lijeka je čovjek – darivatelj krvi. Svakodnevno brojni bolesnici trebaju liječenje krvnim pripravcima, stoga, kako bi se osigurao dovoljan broj krvnih pripravaka, potrebno je uvijek imati dovoljan broj darivatelja. Darivati možete punu krv i/ili krvne sastojke na staničnom separatoru. Krvne sastojke možete darivati samo u HZTM-u, nakon što ste više puta darivali punu krv.',
     },
     {
         id: 2,
         question: 'Tko može darivati krv?',
         answer: 'Krv može darivati svaka osoba: dobrog općeg zdravstvenog stanja, u dobi od 18 do 65 godina, tjelesne težine iznad 55 kilograma, koja zadovoljava kriterije za odabir darivatelja krvi.',
+        link: { label: 'Mogu li darivati?', href: '#mogu-li-darivati' },
     },
     {
         id: 3,
         question: 'Kada darivati krv?',
-        answer: 'Stanje zaliha doza krvi Vaše krvne grupe možete saznati na stranici Hrvatskog zavoda za transfuzijski medicinu. Ako su trenutačne zalihe krvi Vaše krvne grupe ispod oznake premale zalihe, molimo Vas darujte krv. Ako su trenutačne količine krvi Vaše krvne grupe iznad oznake prevelike zalihe, molimo Vas privremeno odgodite darivanje dok se zalihe Vaše krvne grupe ne smanje. Muškarci mogu darivati krv svaka 3 mjeseca (do 7 dana ranije), a žene svaka 4 mjeseca (do 7 dana ranije). Podatak o datumu prethodnog darivanja nalazi se u Vašoj Iskaznici darivatelja. Ako nemate Iskaznicu darivatelja taj podatak možete dobiti na broj telefona 01/4600-337.',
+        answer: 'Stanje zaliha doza krvi Vaše krvne grupe možete saznati na stranici Hrvatskog zavoda za transfuzijsku medicinu. Ako su trenutačne zalihe krvi Vaše krvne grupe ispod oznake premale zalihe, molimo Vas darujte krv. Ako su trenutačne količine krvi Vaše krvne grupe iznad oznake prevelike zalihe, molimo Vas privremeno odgodite darivanje dok se zalihe Vaše krvne grupe ne smanje. Muškarci mogu darivati krv svaka 3 mjeseca (do 7 dana ranije), a žene svaka 4 mjeseca (do 7 dana ranije). Podatak o datumu prethodnog darivanja nalazi se u Vašoj Iskaznici darivatelja. Ako nemate Iskaznicu darivatelja taj podatak možete dobiti na broj telefona 01/4600-337.',
+        link: bloodSupplyLink,
     },
     {
         id: 4,
-        question: 'Što se preopruča prije darivanja krvi?',
+        question: 'Što se preporuča prije darivanja krvi?',
         answer: 'Pojedite lagani obrok i uzmite dovoljno bezalkoholne tekućine. Pripremite osobnu iskaznicu ili putovnicu i zdravstvenu iskaznicu. Ponesite i Iskaznicu darivatelja krvi, kako bi Vam mogli upisati darivanje.',
     },
     {
         id: 5,
         question: 'Mora li se prije darivanja biti "na tašte"?',
-        answer: 'Prije davanja krvi nije potrebno biti natašte. Davanje krvi je sastavni dio svakodnevnog ljudskog načina života i čovjek na taj dan treba uobičajeno jesti i piti. Osjećati ćete se bolje ako nekoliko sati prije davanja krvi pojedete lagani obrok. Jedino Vas molimo da unutar 8 sati prije davanja krvi ne jedete izrazito masnu hranu i ne pijete alkohol jer njihovi sastojci mogu transfuzijom krvi biti uneseni u bolesnika i nanijeti mu štetu.',
+        answer: 'Prije davanja krvi nije potrebno biti natašte. Davanje krvi je sastavni dio svakodnevnog ljudskog načina života i čovjek na taj dan treba uobičajeno jesti i piti. Osjećat ćete se bolje ako nekoliko sati prije davanja krvi pojedete lagani obrok. Jedino Vas molimo da unutar 8 sati prije davanja krvi ne jedete izrazito masnu hranu i ne pijete alkohol jer njihovi sastojci mogu transfuzijom krvi biti uneseni u bolesnika i nanijeti mu štetu.',
     },
     {
         id: 6,
@@ -408,7 +532,7 @@ export const faqItems: FAQItem[] = [
     {
         id: 8,
         question: 'Zašto strani državljani ne mogu darivati krv?',
-        answer: 'Transfuzijska služba svake zemlje prati epidemiološko stanje u zemlji, prati uvijete života darivatelja i prema tim pokazateljima određuje kako i kojim testovima ispitivati krv darivatelja na prisutnost uzročnika zaraznih bolesti. Zbog toga svaka zemlja može biti sigurna samo u krv i krvne pripravke dobivene od darivatelja krvi u toj zemlji. Pravilnikom o krvi i krvnim sastojcima od 16. prosinca 1998. (NN 14/99) u čl. 9, u stavku 2 je propisano da darivatelj krvi mora biti državljanin Republike Hrvatske.',
+        answer: 'Transfuzijska služba svake zemlje prati epidemiološko stanje u zemlji, prati uvjete života darivatelja i prema tim pokazateljima određuje kako i kojim testovima ispitivati krv darivatelja na prisutnost uzročnika zaraznih bolesti. Zbog toga svaka zemlja može biti sigurna samo u krv i krvne pripravke dobivene od darivatelja krvi u toj zemlji. Pravilnikom o krvi i krvnim sastojcima od 16. prosinca 1998. (NN 14/99) u čl. 9, u stavku 2 je propisano da darivatelj krvi mora biti državljanin Republike Hrvatske.',
     },
 ];
 
@@ -426,6 +550,5 @@ export const contactContent = {
 export const footerContent = {
     organization: 'Hrvatski Crveni Križ - Gradsko društvo Crvenog križa Buje',
     tagline: 'Spašavamo živote zajedno - gradimo sigurnije društvo',
-    copyright:
-        '© 2025 Hrvatski Crveni križ - Gradsko društvo Crvenog križa Buje. Sva prava pridržana.',
+    copyright: `© ${new Date().getFullYear()} Hrvatski Crveni križ - Gradsko društvo Crvenog križa Buje. Sva prava pridržana.`,
 };

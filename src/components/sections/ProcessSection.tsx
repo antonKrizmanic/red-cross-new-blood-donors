@@ -1,93 +1,94 @@
 import { Check, Clock } from 'lucide-react';
 import Image from 'next/image';
 import type { CSSProperties } from 'react';
+import { DropShape } from '@/components/ui/DropShape';
 import { EditorialIcon } from '@/components/ui/editorial-icon';
+import { SplitWords } from '@/components/ui/SplitWords';
 import { processContent, processSteps } from '@/content/page-content';
+import styles from './ProcessSection.module.css';
 
 export function ProcessSection() {
     return (
-        <section
-            id="proces"
-            className="section-panel section-paper process-section field-guide-lifeline field-guide-lifeline--red"
-        >
-            <div className="section-container">
-                <header className="section-heading section-heading--split">
-                    <div data-reveal>
-                        <p className="eyebrow">
-                            <span />
-                            03
-                        </p>
-                        <h2 className="display-title">
-                            {processContent.title}
+        <section id="proces" className={styles.process}>
+            <div className={`container ${styles.layout}`}>
+                <div className={styles.aside}>
+                    <header className={styles.heading}>
+                        <h2 className="display display--lg" data-reveal="words">
+                            <SplitWords text={processContent.title} />
                         </h2>
-                    </div>
-                    <p className="section-intro" data-reveal>
-                        {processContent.description}
-                    </p>
-                </header>
-
-                <div className="process-layout">
-                    <div className="process-visual" data-reveal>
-                        <div className="process-visual__frame">
+                        <p className="lede" data-reveal>
+                            {processContent.description}
+                        </p>
+                    </header>
+                    <div className={styles.visual} data-reveal="paper">
+                        <div className={styles.sun} />
+                        <div className={styles.photo}>
                             <Image
                                 src="/process-donor.webp"
-                                alt="Medical process steps guide"
+                                alt="Ruka darivatelja tijekom darivanja krvi"
                                 fill
-                                sizes="(max-width: 900px) 92vw, 46vw"
-                                className="process-visual__image"
+                                sizes="(max-width: 56rem) 90vw, 38vw"
                             />
-                            <div
-                                className="process-visual__index"
-                                aria-hidden="true"
-                            >
-                                03
-                            </div>
                         </div>
                     </div>
+                </div>
 
-                    <div className="process-content">
-                        <ol className="process-steps">
-                            {processSteps.map((step, index) => (
-                                <li
-                                    key={step.title}
-                                    data-reveal
-                                    style={
-                                        {
-                                            '--reveal-delay': `${index * 90}ms`,
-                                        } as CSSProperties
-                                    }
-                                >
-                                    <span className="process-step__number">
-                                        {String(index + 1).padStart(2, '0')}
-                                    </span>
-                                    <span className="process-step__icon">
+                <div className={styles.journey}>
+                    <aside className={styles.preparation} data-reveal="paper">
+                        <h3 className="display">
+                            {processContent.preparationTitle}
+                        </h3>
+                        <ul>
+                            {processContent.preparationItems.map(
+                                (item, index) => (
+                                    <li
+                                        key={item}
+                                        style={
+                                            {
+                                                '--tick-delay': `${300 + index * 130}ms`,
+                                            } as CSSProperties
+                                        }
+                                    >
+                                        <span className={styles.tick}>
+                                            <Check aria-hidden="true" />
+                                        </span>
+                                        {item}
+                                    </li>
+                                ),
+                            )}
+                        </ul>
+                    </aside>
+
+                    <div className={styles.tubeWrap}>
+                        <div
+                            className={styles.tube}
+                            aria-hidden="true"
+                            data-scroll
+                        >
+                            <div className={styles.tubeFill} />
+                            <div className={styles.tubeDropTrack}>
+                                <DropShape className={styles.tubeDrop} />
+                            </div>
+                        </div>
+                        <ol className={styles.steps}>
+                            {processSteps.map((step) => (
+                                <li key={step.title} data-reveal>
+                                    <span className={styles.node}>
                                         <EditorialIcon name={step.icon} />
                                     </span>
-                                    <div className="process-step__copy">
-                                        <div>
-                                            <h3>{step.title}</h3>
-                                            <span className="time-chip">
-                                                <Clock aria-hidden="true" />
-                                                {step.time}
-                                            </span>
-                                        </div>
+                                    <div>
+                                        <h3 className="display">
+                                            {step.title}
+                                        </h3>
                                         <p>{step.description}</p>
+                                        <span className={styles.time}>
+                                            <Clock aria-hidden="true" />
+                                            {step.time}
+                                        </span>
                                     </div>
                                 </li>
                             ))}
                         </ol>
-
-                        <aside className="preparation-panel" data-reveal>
-                            <h3>{processContent.preparationTitle}</h3>
-                            <ul>
-                                {processContent.preparationItems.map((item) => (
-                                    <li key={item}>
-                                        <Check aria-hidden="true" />
-                                        <span>{item}</span>
-                                    </li>
-                                ))}
-                            </ul>
-                        </aside>
                     </div>
                 </div>
             </div>

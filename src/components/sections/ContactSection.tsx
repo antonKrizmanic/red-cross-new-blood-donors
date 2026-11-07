@@ -1,66 +1,49 @@
-import { ArrowUpRight, Mail, Phone } from 'lucide-react';
+import { Mail, Phone } from 'lucide-react';
+import { DropShape } from '@/components/ui/DropShape';
+import { SplitWords } from '@/components/ui/SplitWords';
 import { contactContent } from '@/content/page-content';
+import styles from './ContactSection.module.css';
 
 export function ContactSection() {
     return (
-        <section
-            id="kontakt"
-            className="section-panel section-ink contact-section field-guide-lifeline field-guide-lifeline--red"
-        >
-            <div
-                className="section-symbol section-symbol--left"
-                aria-hidden="true"
-            >
-                +
-            </div>
-            <div className="section-container section-container--narrow">
-                <header className="section-heading section-heading--split">
-                    <div data-reveal>
-                        <p className="eyebrow eyebrow--light">
-                            <span />
-                            06
-                        </p>
-                        <h2 className="display-title display-title--light">
-                            {contactContent.title}
-                        </h2>
-                    </div>
-                    <p
-                        className="section-intro section-intro--light"
-                        data-reveal
-                    >
+        <section id="kontakt" className={styles.contact}>
+            <DropShape className={styles.drop} />
+            <div className={`container ${styles.inner}`}>
+                <header className={styles.heading}>
+                    <h2 className="display display--xl" data-reveal="words">
+                        <SplitWords text={contactContent.title} />
+                    </h2>
+                    <p className="lede" data-reveal>
                         {contactContent.description}
                     </p>
                 </header>
 
-                <div className="contact-grid">
+                <div className={styles.links}>
                     <a
                         href={contactContent.phoneHref}
-                        className="contact-link"
+                        className={styles.link}
                         data-reveal
                     >
-                        <span className="contact-link__icon">
+                        <span className={styles.label}>
                             <Phone aria-hidden="true" />
+                            {contactContent.phoneLabel}
                         </span>
-                        <span className="contact-link__copy">
-                            <span>{contactContent.phoneLabel}</span>
-                            <strong>{contactContent.phone}</strong>
-                        </span>
-                        <ArrowUpRight aria-hidden="true" />
+                        <strong className="display">
+                            {contactContent.phone}
+                        </strong>
                     </a>
-
                     <a
                         href={contactContent.emailHref}
-                        className="contact-link"
+                        className={styles.link}
                         data-reveal
                     >
-                        <span className="contact-link__icon">
+                        <span className={styles.label}>
                             <Mail aria-hidden="true" />
+                            {contactContent.emailLabel}
                         </span>
-                        <span className="contact-link__copy">
-                            <span>{contactContent.emailLabel}</span>
-                            <strong>{contactContent.email}</strong>
-                        </span>
-                        <ArrowUpRight aria-hidden="true" />
+                        <strong className="display">
+                            {contactContent.email}
+                        </strong>
                     </a>
                 </div>
             </div>

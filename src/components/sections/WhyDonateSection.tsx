@@ -1,62 +1,50 @@
 import { ArrowUpRight } from 'lucide-react';
 import type { CSSProperties } from 'react';
-import { EditorialIcon } from '@/components/ui/editorial-icon';
+import { BenefitIllustration } from '@/components/illustrations/BenefitIllustration';
+import { DropShape } from '@/components/ui/DropShape';
 import { benefits, whyDonateContent } from '@/content/page-content';
+import styles from './WhyDonateSection.module.css';
+
+const tilts = ['-2.5deg', '2deg', '1.5deg', '-2deg'];
 
 export function WhyDonateSection() {
     return (
-        <section id="zasto-dariti-krv" className="section-panel section-red">
-            <div
-                className="section-symbol section-symbol--right"
-                aria-hidden="true"
-            >
-                +
-            </div>
-            <div className="section-container">
-                <header className="section-heading section-heading--split">
-                    <div data-reveal>
-                        <p className="eyebrow eyebrow--light">
-                            <span />
-                            01
-                        </p>
-                        <h2 className="display-title display-title--light">
-                            {whyDonateContent.title}
-                        </h2>
-                    </div>
-                    <p
-                        className="section-intro section-intro--light"
-                        data-reveal
-                    >
-                        {whyDonateContent.description}
-                    </p>
+        <section className={styles.why}>
+            {/* Plays once on arrival: one drop falls and fills the section. */}
+            <div id="zasto-dariti-krv" className={styles.portal} data-trigger>
+                <DropShape className={styles.drop} />
+                <header className={`container ${styles.heading}`}>
+                    <h2 className="display display--lg">
+                        {whyDonateContent.title}
+                    </h2>
+                    <p className="lede">{whyDonateContent.description}</p>
                 </header>
+            </div>
 
-                <div className="benefits-grid">
-                    {benefits.map((benefit, index) => (
-                        <article
-                            key={benefit.title}
-                            className="benefit-card"
-                            data-reveal
-                            style={
-                                {
-                                    '--reveal-delay': `${index * 80}ms`,
-                                } as CSSProperties
-                            }
-                        >
-                            <div className="benefit-card__top">
-                                <span className="benefit-card__number">
-                                    {String(index + 1).padStart(2, '0')}
-                                </span>
-                                <EditorialIcon
-                                    name={benefit.icon}
-                                    className="benefit-card__icon"
-                                />
-                            </div>
-                            <h3>{benefit.title}</h3>
+            <div className={`container ${styles.posters}`}>
+                {benefits.map((benefit, index) => (
+                    <article
+                        key={benefit.title}
+                        className={styles.poster}
+                        data-reveal="paper"
+                        style={
+                            {
+                                '--reveal-rotate': tilts[index],
+                                '--reveal-delay': `${(index % 2) * 90}ms`,
+                            } as CSSProperties
+                        }
+                    >
+                        <BenefitIllustration
+                            icon={benefit.icon}
+                            className={styles.art}
+                        />
+                        <div className={styles.text}>
+                            <h3 className="display">{benefit.title}</h3>
                             <p>{benefit.description}</p>
                             {benefit.link && (
                                 <a
                                     href={benefit.link.href}
+                                    className={styles.link}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
@@ -64,9 +52,9 @@ export function WhyDonateSection() {
                                     <ArrowUpRight aria-hidden="true" />
                                 </a>
                             )}
-                        </article>
-                    ))}
-                </div>
+                        </div>
+                    </article>
+                ))}
             </div>
         </section>
     );

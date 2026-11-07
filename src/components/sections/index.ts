@@ -1,7 +1,9 @@
 export { ContactSection } from './ContactSection';
+export { EligibilitySection } from './EligibilitySection';
 export { FAQSection } from './FAQSection';
 export { Footer } from './Footer';
 export { HeroSection } from './HeroSection';
 export { JoinCommunitySection } from './JoinCommunitySection';
+export { ProcessSection } from './ProcessSection';
 export { UpcomingEventsSection } from './UpcomingEventsSection';
 export { WhyDonateSection } from './WhyDonateSection';

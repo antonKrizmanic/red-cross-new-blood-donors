@@ -43,7 +43,7 @@
     },
     "css": {
         "parser": {
-            "tailwindDirectives": true
+            "cssModules": true
         }
     },
     "assist": {

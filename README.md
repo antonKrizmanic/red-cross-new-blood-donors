@@ -1,36 +1,65 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Daruj krv, spasi život
 
-## Getting Started
+Website of the Croatian Red Cross city branch in Buje (Hrvatski Crveni križ,
+Gradsko društvo Crvenog križa Buje). It encourages blood donation in Umag, Buje
+and Novigrad and lists upcoming donation events.
 
-First, run the development server:
+Built with Next.js, React and TypeScript, using plain CSS Modules. There is no
+backend: all content lives in the repository.
+
+## Getting started
+
+This project uses [pnpm](https://pnpm.io).
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+pnpm install
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The site runs at <http://localhost:3005>.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Command       | What it does                       |
+| ------------- | ---------------------------------- |
+| `pnpm dev`    | Starts the development server      |
+| `pnpm build`  | Creates a production build         |
+| `pnpm start`  | Serves the production build        |
+| `pnpm lint`   | Checks and fixes code with Biome   |
+| `pnpm format` | Formats code with Biome            |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Updating content
 
-## Learn More
+All text is in [`src/content/page-content.ts`](src/content/page-content.ts).
 
-To learn more about Next.js, take a look at the following resources:
+To add a donation event, add an entry to `donationActions`. Keep the title in
+the `DD.MM.YYYY. – Place` format, because the event list splits it into the date
+and the place. The `HH:MM - HH:MM` hours in `time` also set the event's calendar
+entry and search data:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```ts
+{
+    date: new Date('2027-01-15'),
+    title: '15.01.2027. – Grad Umag',
+    time: '09:00 - 17:00 (pauza 13:00 - 14:00)',
+    location: 'Zajednica Talijana Umag',
+    address: 'Brolo 1, 52470 Umag',
+    description:
+        'Za točnu lokaciju prati naše objave na društvenim mrežama i lokalnim medijima.',
+},
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The description only appears when the time, location or address is missing. When
+no upcoming events remain, the page shows a "new dates soon" message instead.
 
-## Deploy on Vercel
+The questions in the "Mogu li darivati?" check are in `eligibilityQuestions`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+An event stays listed through its whole day. The page regenerates hourly, so
+finished events drop off without a new deployment when the site runs on a Node.js
+server or on Vercel.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Project structure
+
+- `src/app`: page, metadata and global styles
+- `src/components/sections`: page sections, each with its own CSS Module
+- `src/components/illustrations`: animated drawings on the benefit posters
+- `src/components/motion`: scroll-triggered reveals and progress
+- `public/IMAGE-ATTRIBUTION.md`: photo credits

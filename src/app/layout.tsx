@@ -1,17 +1,17 @@
 import type { Metadata } from 'next';
-import { Roboto, Roboto_Slab } from 'next/font/google';
+import { Bricolage_Grotesque, Literata } from 'next/font/google';
 import './globals.css';
 
-const roboto = Roboto({
-    variable: '--font-roboto',
+const bricolage = Bricolage_Grotesque({
+    variable: '--font-bricolage',
     subsets: ['latin', 'latin-ext'],
-    weight: ['400', '500', '700', '900'],
+    axes: ['opsz', 'wdth'],
 });
 
-const robotoSlab = Roboto_Slab({
-    variable: '--font-roboto-slab',
+const literata = Literata({
+    variable: '--font-literata',
     subsets: ['latin', 'latin-ext'],
-    weight: ['400', '500', '600', '700'],
+    axes: ['opsz'],
 });
 
 export const metadata: Metadata = {
@@ -100,12 +100,11 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="hr">
-            <body
-                className={`${roboto.variable} ${robotoSlab.variable} antialiased`}
-            >
-                {children}
-            </body>
+        <html
+            lang="hr"
+            className={`${bricolage.variable} ${literata.variable}`}
+        >
+            <body>{children}</body>
         </html>
     );
 }

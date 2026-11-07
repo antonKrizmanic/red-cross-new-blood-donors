@@ -1,0 +1,14 @@
+.page {
+    display: grid;
+    place-content: center;
+    justify-items: center;
+    gap: 1.25rem;
+    min-height: 100svh;
+    padding: var(--gutter);
+    text-align: center;
+}
+
+.page h1 {
+    color: var(--red);
+    font-size: clamp(6rem, 24vw, 16rem);
+}

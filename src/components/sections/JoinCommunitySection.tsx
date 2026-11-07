@@ -1,82 +1,113 @@
-import type { CSSProperties } from 'react';
-import { SocialCard } from '@/components/social/social-card';
+import { ArrowUpRight } from 'lucide-react';
+import type { CSSProperties, ReactNode } from 'react';
 import { EditorialIcon } from '@/components/ui/editorial-icon';
+import { FacebookIcon } from '@/components/ui/icons/facebook-icon';
+import { InstagramIcon } from '@/components/ui/icons/instagram-icon';
+import SmartphoneIcon from '@/components/ui/icons/smartphone-icon';
+import { ViberIcon } from '@/components/ui/icons/viber-icon';
+import WebPageIcon from '@/components/ui/icons/web-page-icon';
+import { WhatsAppIcon } from '@/components/ui/icons/whats-app-icon';
+import { SplitWords } from '@/components/ui/SplitWords';
+import type { ChannelAccent, ChannelIcon } from '@/content/page-content';
 import {
     communityChannels,
     communityContent,
     communityValues,
 } from '@/content/page-content';
+import styles from './JoinCommunitySection.module.css';
+
+const channelIcons: Record<ChannelIcon, ReactNode> = {
+    application: <SmartphoneIcon />,
+    whatsapp: <WhatsAppIcon />,
+    viber: <ViberIcon />,
+    facebook: <FacebookIcon />,
+    instagram: <InstagramIcon />,
+    website: <WebPageIcon />,
+};
+
+const accentColors: Record<ChannelAccent, string> = {
+    red: 'var(--red)',
+    green: '#128c4f',
+    purple: '#6d3fb8',
+    blue: '#1e66b8',
+    instagram: '#c1267a',
+};
 
 export function JoinCommunitySection() {
     return (
-        <section id="pridruzi" className="section-panel section-paper">
-            <div
-                className="section-symbol section-symbol--left"
-                aria-hidden="true"
-            >
-                −
-            </div>
-            <div className="section-container">
-                <header className="community-heading">
-                    <div data-reveal>
-                        <p className="eyebrow">
-                            <span />
-                            02
-                        </p>
-                        <h2 className="display-title">
-                            {communityContent.title}
-                        </h2>
-                    </div>
-                    <div className="community-heading__copy" data-reveal>
-                        <p className="section-intro">
-                            {communityContent.description}
-                        </p>
-                        <div className="badge-row">
-                            {communityContent.badges.map((badge) => (
-                                <span key={badge}>{badge}</span>
-                            ))}
-                        </div>
-                    </div>
-                </header>
-
-                <div className="community-values">
-                    {communityValues.map((value, index) => (
-                        <article
-                            key={value.title}
-                            className="community-value"
-                            data-reveal
-                            style={
-                                {
-                                    '--reveal-delay': `${index * 80}ms`,
-                                } as CSSProperties
-                            }
-                        >
-                            <div className="community-value__icon">
+        <section id="pridruzi" className={styles.join}>
+            <div className={`container ${styles.layout}`}>
+                <div className={styles.intro}>
+                    <h2 className="display display--lg" data-reveal="words">
+                        <SplitWords text={communityContent.title} />
+                    </h2>
+                    <p className="lede" data-reveal>
+                        {communityContent.description}
+                    </p>
+                    <ul className={styles.badges} data-reveal>
+                        {communityContent.badges.map((badge) => (
+                            <li key={badge}>{badge}</li>
+                        ))}
+                    </ul>
+                    <ul className={styles.values}>
+                        {communityValues.map((value, index) => (
+                            <li
+                                key={value.title}
+                                data-reveal
+                                style={
+                                    {
+                                        '--reveal-delay': `${index * 70}ms`,
+                                    } as CSSProperties
+                                }
+                            >
                                 <EditorialIcon name={value.icon} />
-                            </div>
-                            <div>
-                                <h3>{value.title}</h3>
-                                <p>{value.description}</p>
-                            </div>
-                        </article>
-                    ))}
+                                <div>
+                                    <h3>{value.title}</h3>
+                                    <p>{value.description}</p>
+                                </div>
+                            </li>
+                        ))}
+                    </ul>
                 </div>
 
-                <div className="social-grid">
+                <ul className={styles.channels}>
                     {communityChannels.map((channel, index) => (
-                        <div
+                        <li
                             key={channel.href}
-                            data-reveal
+                            data-reveal="paper"
                             style={
                                 {
-                                    '--reveal-delay': `${(index % 3) * 70}ms`,
+                                    '--reveal-delay': `${index * 60}ms`,
+                                    '--reveal-rotate': `${index % 2 ? 1.2 : -1.2}deg`,
                                 } as CSSProperties
                             }
                         >
-                            <SocialCard channel={channel} />
-                        </div>
+                            <a
+                                href={channel.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className={styles.channel}
+                                style={
+                                    {
+                                        '--accent':
+                                            accentColors[channel.accent],
+                                    } as CSSProperties
+                                }
+                            >
+                                <span className={styles.channelIcon}>
+                                    {channelIcons[channel.icon]}
+                                </span>
+                                <span className={styles.channelLabel}>
+                                    {channel.ctaText}
+                                </span>
+                                <ArrowUpRight
+                                    className={styles.channelArrow}
+                                    aria-hidden="true"
+                                />
+                            </a>
+                        </li>
                     ))}
-                </div>
+                </ul>
             </div>
         </section>
     );

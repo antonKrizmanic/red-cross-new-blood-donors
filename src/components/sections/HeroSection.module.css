@@ -1,0 +1,253 @@
+.hero {
+    display: flex;
+    flex-direction: column;
+    min-height: 100svh;
+    overflow: clip;
+}
+
+.layout {
+    position: relative;
+    display: grid;
+    flex: 1;
+    align-items: center;
+    padding-block: 6rem 2.5rem;
+}
+
+.copy {
+    position: relative;
+    z-index: 2;
+}
+
+.copy h1 {
+    font-size: min(19.5vw, 9.5rem);
+}
+
+.titleLine {
+    display: block;
+    white-space: nowrap;
+}
+
+.accent {
+    color: var(--red);
+}
+
+.description {
+    margin-top: clamp(1.25rem, 2.5vw, 2.25rem);
+    max-width: 24em;
+}
+
+.actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: clamp(1.5rem, 2.5vw, 2.25rem);
+}
+
+.art {
+    position: relative;
+    z-index: 1;
+    width: min(74vw, 22rem);
+    aspect-ratio: 100 / 130;
+    margin: 2.5rem auto 0;
+}
+
+.backing,
+.pulse,
+.photo {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.backing {
+    color: var(--red);
+    transform: translate(-4.5%, 3%) rotate(-5deg);
+}
+
+.pulse {
+    color: var(--blush);
+}
+
+.photo {
+    overflow: hidden;
+    mask:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 130' preserveAspectRatio='none'%3E%3Cpath d='M50 0C50 0 95 47 95 85A45 45 0 1 1 5 85C5 47 50 0 50 0Z'/%3E%3C/svg%3E")
+        center / 100% 100% no-repeat;
+}
+
+/* Frames the sunlit chairs at the top of the portrait photograph. */
+.photo img {
+    position: absolute;
+    top: -4%;
+    left: -45%;
+    width: 205%;
+    max-width: none;
+    height: auto;
+}
+
+/* Stays on screen for as long as the hero does: the date is the first thing
+   a returning donor is looking for. */
+.next {
+    position: sticky;
+    bottom: 0;
+    z-index: 3;
+    display: block;
+    background: var(--red);
+    color: var(--stone);
+    text-decoration: none;
+    transition: background-color 0.25s;
+}
+
+.nextInner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.25rem 1.5rem;
+    padding-block: 1rem;
+    font-family: var(--font-display);
+    font-size: 1rem;
+    line-height: 1.3;
+}
+
+.nextLabel {
+    display: flex;
+    flex-basis: 100%;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+}
+
+.nextDrop {
+    flex: none;
+    width: 0.8em;
+    color: var(--sun);
+}
+
+.nextTitle {
+    flex-basis: 100%;
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -0.015em;
+}
+
+.nextMeta {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.nextMeta svg {
+    flex: none;
+    width: 1em;
+    height: 1em;
+}
+
+.nextArrow {
+    display: none;
+    transition: transform 0.35s var(--ease-settle);
+}
+
+@media (hover: hover) {
+    .next:hover {
+        background: var(--red-deep);
+    }
+
+    .next:hover .nextArrow {
+        transform: translateY(4px);
+    }
+}
+
+@media (min-width: 56rem) {
+    .layout {
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+        padding-block: 5.5rem 2rem;
+    }
+
+    .copy {
+        grid-area: 1 / 1 / 2 / 11;
+    }
+
+    .copy h1 {
+        font-size: clamp(3.25rem, 11vw, 11.5rem);
+    }
+
+    .description {
+        max-width: 20em;
+    }
+
+    .art {
+        grid-area: 1 / 7 / 2 / 13;
+        justify-self: end;
+        width: auto;
+        height: min(100%, 44rem);
+        min-height: 26rem;
+        margin: 0 clamp(0rem, 2vw, 2rem) 0 0;
+    }
+
+    .nextInner {
+        flex-wrap: nowrap;
+        gap: 2rem;
+        padding-block: 1.125rem;
+    }
+
+    .nextLabel,
+    .nextTitle {
+        flex-basis: auto;
+    }
+
+    .nextMeta:first-of-type {
+        margin-left: auto;
+    }
+
+    .nextArrow {
+        display: block;
+        flex: none;
+    }
+}
+
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+    .art {
+        animation: fall 1.25s var(--ease-out) 0.1s both;
+        transform-origin: 50% 100%;
+    }
+
+    .pulse {
+        opacity: 0;
+        animation: pulse 3.4s ease-out 1.4s infinite;
+    }
+
+    .pulse[data-late="true"] {
+        animation-delay: 1.75s;
+    }
+
+    @keyframes fall {
+        0% {
+            translate: 0 -115vh;
+            scale: 0.72 0.82;
+        }
+        62% {
+            translate: 0 0;
+            scale: 1.05 0.94;
+        }
+        80% {
+            scale: 0.985 1.02;
+        }
+        100% {
+            translate: 0 0;
+            scale: 1;
+        }
+    }
+
+    @keyframes pulse {
+        0% {
+            opacity: 0.9;
+            transform: scale(1);
+        }
+        45%,
+        100% {
+            opacity: 0;
+            transform: scale(1.16);
+        }
+    }
+}

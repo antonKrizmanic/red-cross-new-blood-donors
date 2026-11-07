@@ -1,0 +1,214 @@
+.why {
+    position: relative;
+    background: var(--red);
+    color: var(--stone);
+}
+
+.portal {
+    position: relative;
+    display: grid;
+    place-items: center;
+    min-height: 80svh;
+    padding-block: 6rem 2rem;
+    overflow: hidden;
+}
+
+/* Without motion the section simply starts red, so the drop is opt-in. */
+.drop {
+    display: none;
+}
+
+.heading {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    justify-items: center;
+    gap: clamp(1rem, 2vw, 1.75rem);
+    text-align: center;
+}
+
+.heading h2 {
+    font-size: clamp(3.25rem, 9.6vw, 10rem);
+}
+
+.posters {
+    display: grid;
+    gap: clamp(1rem, 1.6vw, 1.5rem);
+    padding-block: clamp(1rem, 4vw, 3rem) var(--section-space);
+}
+
+.poster {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 2rem;
+    min-height: 25rem;
+    padding: clamp(1.5rem, 3vw, 2.75rem);
+    border-radius: var(--radius);
+    color: var(--oxblood);
+}
+
+.poster:nth-child(1) {
+    background: var(--stone);
+}
+
+.poster:nth-child(2) {
+    background: var(--oxblood);
+    color: var(--stone);
+}
+
+.poster:nth-child(3) {
+    background: var(--blush);
+}
+
+.poster:nth-child(4) {
+    background: var(--sun);
+}
+
+.art {
+    width: auto;
+    height: clamp(9.5rem, 17vw, 15rem);
+    max-width: 100%;
+    align-self: flex-start;
+}
+
+.text {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.text h3 {
+    font-size: clamp(2.125rem, 4.2vw, 4.25rem);
+}
+
+.text p {
+    max-width: 30em;
+    text-wrap: pretty;
+}
+
+.link {
+    display: inline-flex;
+    align-items: center;
+    justify-self: start;
+    gap: 0.4em;
+    min-height: 2.75rem;
+    font-family: var(--font-display);
+    font-weight: 700;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.25em;
+}
+
+.link svg {
+    width: 1.2em;
+    height: 1.2em;
+    transition: transform 0.35s var(--ease-settle);
+}
+
+@media (hover: hover) {
+    .link:hover svg {
+        transform: translate(3px, -3px);
+    }
+}
+
+@media (min-width: 56rem) {
+    .posters {
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+    }
+
+    .poster {
+        min-height: 34rem;
+    }
+
+    .poster:nth-child(4n + 1),
+    .poster:nth-child(4n) {
+        grid-column: span 7;
+    }
+
+    .poster:nth-child(4n + 2),
+    .poster:nth-child(4n + 3) {
+        grid-column: span 5;
+    }
+}
+
+/* Time-based and transform-only, so it runs on the compositor and looks the
+   same with a mouse wheel, a trackpad or a finger. The transform origin sits at
+   the centre of the drop's round body. A radius of 18vmax scaled by 5.4 reaches
+   every corner of the section, on any screen shape. */
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+    .portal {
+        background: var(--stone);
+    }
+
+    .portal:global(.is-visible) {
+        animation: filled 1ms linear 0.86s forwards;
+    }
+
+    .drop {
+        position: absolute;
+        top: calc(30% - 34vmax);
+        left: calc(50% - 20vmax);
+        display: block;
+        width: 40vmax;
+        color: var(--red);
+        transform-origin: 50% 65.4%;
+        visibility: hidden;
+        will-change: transform;
+    }
+
+    .portal:global(.is-visible) .drop {
+        visibility: visible;
+        animation:
+            fill 0.9s linear both,
+            gone 1ms linear 0.9s forwards;
+    }
+
+    .portal:not(:global(.is-visible)) .heading {
+        opacity: 0;
+    }
+
+    .portal:global(.is-visible) .heading {
+        animation: heading-in 0.55s var(--ease-out) 0.56s both;
+    }
+
+    @keyframes fill {
+        0% {
+            transform: translateY(-24svh) scale(0.15);
+            animation-timing-function: cubic-bezier(0.5, 0, 1, 0.7);
+        }
+        28% {
+            transform: translateY(0) scale(0.17);
+            animation-timing-function: ease-out;
+        }
+        36% {
+            transform: translateY(0) scale(0.2, 0.15);
+            animation-timing-function: cubic-bezier(0.55, 0, 0.7, 0.4);
+        }
+        100% {
+            transform: translateY(0) scale(5.4);
+        }
+    }
+
+    @keyframes gone {
+        to {
+            visibility: hidden;
+        }
+    }
+
+    @keyframes filled {
+        to {
+            background-color: var(--red);
+        }
+    }
+
+    @keyframes heading-in {
+        from {
+            opacity: 0;
+            transform: translateY(1.5rem);
+        }
+        to {
+            opacity: 1;
+            transform: none;
+        }
+    }
+}
