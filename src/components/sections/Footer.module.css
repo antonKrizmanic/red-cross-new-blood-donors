@@ -1,0 +1,74 @@
+.footer {
+    padding-block: clamp(4rem, 8vw, 7rem) 2rem;
+    background: var(--oxblood);
+    color: var(--stone);
+}
+
+.inner {
+    display: grid;
+    gap: clamp(2.5rem, 5vw, 4.5rem);
+}
+
+.tagline {
+    max-width: 16em;
+    font-size: clamp(2.5rem, 6.6vw, 6.5rem);
+    color: var(--blush);
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo {
+    display: grid;
+    flex: none;
+    place-items: center;
+    width: 4.5rem;
+    height: 4.5rem;
+    border-radius: 50%;
+    background: var(--stone);
+}
+
+.logo img {
+    width: 3.5rem;
+    height: 3.5rem;
+}
+
+.brand h3 {
+    max-width: 22em;
+    font-family: var(--font-display);
+    font-size: clamp(1.125rem, 1rem + 0.5vw, 1.5rem);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+}
+
+.bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid color-mix(in srgb, var(--stone) 28%, transparent);
+    font-size: 0.9375rem;
+    line-height: 1.4;
+}
+
+.bottom a {
+    display: grid;
+    flex: none;
+    place-items: center;
+    width: 3.25rem;
+    height: 3.25rem;
+    border-radius: 50%;
+    background: var(--red);
+    transition: transform 0.4s var(--ease-settle);
+}
+
+@media (hover: hover) {
+    .bottom a:hover {
+        transform: translateY(-4px);
+    }
+}

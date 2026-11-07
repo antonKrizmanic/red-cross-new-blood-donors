@@ -1,0 +1,244 @@
+/* The resting state of each drawing is its final state; animations only play
+   once the enclosing poster has been revealed. */
+
+/* Three lives */
+.lives path {
+    fill: var(--red);
+}
+
+.lives .heart {
+    fill: var(--stone);
+    transform-box: fill-box;
+    transform-origin: center;
+}
+
+.source {
+    opacity: 0;
+    transform-box: fill-box;
+    transform-origin: 50% 100%;
+}
+
+/* Clock */
+.face {
+    fill: var(--blush);
+}
+
+.sector {
+    fill: none;
+    stroke: var(--red);
+    stroke-width: 84;
+    stroke-dasharray: 10 60;
+}
+
+.tick {
+    fill: var(--oxblood);
+    opacity: 0.35;
+}
+
+.hand {
+    fill: var(--oxblood);
+    transform-origin: 100px 100px;
+    transform: rotate(60deg);
+}
+
+.pin {
+    fill: var(--oxblood);
+}
+
+/* Shield */
+.shieldFill {
+    fill: var(--red);
+}
+
+.shieldLine {
+    fill: none;
+    stroke: var(--red);
+    stroke-width: 5;
+    stroke-linejoin: round;
+    stroke-dasharray: 1;
+}
+
+.shieldCheck {
+    fill: none;
+    stroke: var(--stone);
+    stroke-width: 22;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 1;
+}
+
+/* Gift */
+.box {
+    fill: var(--red);
+}
+
+.ribbon {
+    fill: var(--oxblood);
+}
+
+.lid {
+    transform-box: fill-box;
+    transform-origin: 0% 100%;
+    transform: translateY(-16px) rotate(-7deg);
+}
+
+.giftHeart {
+    fill: var(--red);
+}
+
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+    :global(.is-visible) .source {
+        animation: source 0.9s var(--ease-out) 0.15s both;
+    }
+
+    :global(.is-visible) .lifeInner {
+        animation: split 0.95s var(--ease-settle) var(--delay) both;
+    }
+
+    :global(.is-visible) .lives .heart {
+        animation:
+            pop 0.55s var(--ease-settle) 1.25s both,
+            beat 2.2s ease-in-out calc(1.9s + var(--beat-delay)) infinite;
+    }
+
+    :global(.is-visible) .sector {
+        animation: sweep 1.5s var(--ease-out) 0.35s both;
+    }
+
+    :global(.is-visible) .hand {
+        animation: hand 1.5s var(--ease-out) 0.35s both;
+    }
+
+    :global(.is-visible) .shieldLine {
+        animation: trace 1.3s ease-in-out 0.2s both;
+    }
+
+    :global(.is-visible) .shieldFill {
+        animation: fade 0.5s ease-out 1.2s both;
+    }
+
+    :global(.is-visible) .shieldCheck {
+        animation: trace 0.55s ease-out 1.45s both;
+    }
+
+    :global(.is-visible) .lid {
+        animation: lift 0.9s var(--ease-settle) 0.45s both;
+    }
+
+    :global(.is-visible) .giftHeart {
+        animation: rise 0.9s var(--ease-out) 0.75s both;
+    }
+
+    :global(.is-visible) .giftHeart:nth-child(2) {
+        animation-delay: 0.9s;
+    }
+
+    :global(.is-visible) .giftHeart:nth-child(3) {
+        animation-delay: 1.05s;
+    }
+
+    @keyframes source {
+        0% {
+            opacity: 1;
+            transform: scale(1);
+        }
+        55% {
+            opacity: 1;
+            transform: scale(1.12, 0.86);
+        }
+        100% {
+            opacity: 0;
+            transform: scale(0.7, 0.5);
+        }
+    }
+
+    @keyframes split {
+        from {
+            opacity: 0;
+            transform: translateX(var(--from-x)) scale(0.4);
+        }
+        to {
+            opacity: 1;
+            transform: none;
+        }
+    }
+
+    @keyframes pop {
+        from {
+            transform: scale(0);
+        }
+        to {
+            transform: scale(1);
+        }
+    }
+
+    @keyframes beat {
+        0%,
+        30%,
+        100% {
+            transform: scale(1);
+        }
+        10% {
+            transform: scale(1.14);
+        }
+        20% {
+            transform: scale(0.98);
+        }
+    }
+
+    @keyframes sweep {
+        from {
+            stroke-dasharray: 0 60;
+        }
+        to {
+            stroke-dasharray: 10 60;
+        }
+    }
+
+    @keyframes hand {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(60deg);
+        }
+    }
+
+    @keyframes trace {
+        from {
+            stroke-dashoffset: 1;
+        }
+        to {
+            stroke-dashoffset: 0;
+        }
+    }
+
+    @keyframes fade {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    @keyframes lift {
+        from {
+            transform: none;
+        }
+        to {
+            transform: translateY(-16px) rotate(-7deg);
+        }
+    }
+
+    @keyframes rise {
+        from {
+            opacity: 0;
+            translate: 0 60px;
+        }
+        to {
+            opacity: 1;
+            translate: 0 0;
+        }
+    }
+}

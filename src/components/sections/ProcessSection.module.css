@@ -1,0 +1,223 @@
+.process {
+    padding-block: var(--section-space);
+}
+
+.layout {
+    display: grid;
+    gap: clamp(3rem, 6vw, 6rem);
+}
+
+.heading {
+    display: grid;
+    gap: clamp(1rem, 2vw, 1.75rem);
+}
+
+.visual {
+    position: relative;
+    max-width: 30rem;
+    margin-top: clamp(2.5rem, 5vw, 4rem);
+    padding-right: 12%;
+}
+
+.sun {
+    position: absolute;
+    top: 8%;
+    right: 0;
+    width: 52%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: var(--sun);
+}
+
+/* An arch cropped to the open hand, leaving the collection bag out of frame. */
+.photo {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    border-radius: 999px 999px var(--radius) var(--radius);
+}
+
+.photo img {
+    object-fit: cover;
+    object-position: 50% 38%;
+}
+
+.journey {
+    display: grid;
+    gap: clamp(2.5rem, 5vw, 4.5rem);
+}
+
+.preparation {
+    padding: clamp(1.5rem, 3vw, 2.75rem);
+    border-radius: var(--radius);
+    background: var(--blush);
+}
+
+.preparation h3 {
+    font-size: clamp(2rem, 3.4vw, 3.25rem);
+}
+
+.preparation ul {
+    display: grid;
+    gap: 0.875rem;
+    margin-top: 1.5rem;
+}
+
+.preparation li {
+    display: flex;
+    gap: 0.875rem;
+    line-height: 1.4;
+}
+
+.tick {
+    display: grid;
+    flex: none;
+    place-items: center;
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 50%;
+    background: var(--red);
+    color: var(--stone);
+}
+
+.tick svg {
+    width: 1.1rem;
+    height: 1.1rem;
+    stroke-width: 3;
+}
+
+.tubeWrap {
+    --node: 4rem;
+    position: relative;
+}
+
+/* An IV line that fills as the visitor reads down through the steps. */
+.tube {
+    --flow: clamp(0, calc((var(--p, 1) - 0.25) * 2.4), 1);
+    position: absolute;
+    top: 1rem;
+    bottom: 1rem;
+    left: calc(var(--node) / 2 - 0.25rem);
+    width: 0.5rem;
+    border-radius: 999px;
+    background: var(--blush);
+}
+
+.tubeFill {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: var(--red);
+    transform: scaleY(var(--flow));
+    transform-origin: top;
+    will-change: transform;
+}
+
+.tubeDropTrack {
+    position: absolute;
+    inset: 0;
+    transform: translateY(calc(var(--flow) * 100%));
+    will-change: transform;
+}
+
+.tubeDrop {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 1.75rem;
+    color: var(--red);
+    transform: translate(-50%, -30%);
+}
+
+.steps {
+    position: relative;
+    display: grid;
+    gap: clamp(2.5rem, 5vw, 4.5rem);
+}
+
+.steps li {
+    display: grid;
+    grid-template-columns: var(--node) minmax(0, 1fr);
+    gap: clamp(1rem, 2.5vw, 2rem);
+}
+
+.node {
+    display: grid;
+    place-items: center;
+    width: var(--node);
+    height: var(--node);
+    border-radius: 50%;
+    background: var(--oxblood);
+    color: var(--stone);
+    box-shadow: 0 0 0 0.5rem var(--stone);
+}
+
+.node svg {
+    width: 1.75rem;
+    height: 1.75rem;
+}
+
+.steps h3 {
+    font-size: clamp(2rem, 3.8vw, 3.75rem);
+}
+
+.steps p {
+    margin-top: 0.625rem;
+    max-width: 28em;
+    text-wrap: pretty;
+}
+
+.time {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 0.875rem;
+    padding: 0.3rem 0.875rem;
+    border-radius: 999px;
+    background: var(--oxblood);
+    color: var(--stone);
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.time svg {
+    width: 1em;
+    height: 1em;
+}
+
+@media (min-width: 56rem) {
+    .layout {
+        grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+        align-items: start;
+        column-gap: clamp(3rem, 7vw, 8rem);
+    }
+
+    .aside {
+        position: sticky;
+        top: 6rem;
+    }
+
+    .photo {
+        aspect-ratio: 1;
+    }
+
+    .visual {
+        max-width: min(100%, 44svh);
+    }
+}
+
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+    :global(.is-visible) .tick {
+        animation: tick 0.6s var(--ease-settle) var(--tick-delay) both;
+    }
+
+    @keyframes tick {
+        from {
+            transform: scale(0);
+        }
+        to {
+            transform: scale(1);
+        }
+    }
+}

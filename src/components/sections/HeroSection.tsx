@@ -1,74 +1,110 @@
-'use client';
-import { Button } from '@/components/ui/shadcn/button';
-import TypingText from '../ui/shadcn-io/typing-text';
+import { ArrowDown, ArrowRight, Clock, MapPin } from 'lucide-react';
+import Image from 'next/image';
+import { DropShape } from '@/components/ui/DropShape';
+import { SplitWords } from '@/components/ui/SplitWords';
+import type { DonationAction } from '@/content/page-content';
+import { eventsContent, heroContent } from '@/content/page-content';
+import styles from './HeroSection.module.css';
 
-export function HeroSection() {
+type HeroSectionProps = {
+    nextAction?: DonationAction;
+};
+
+export function HeroSection({ nextAction }: HeroSectionProps) {
+    const [titleLead, titleAccent] = heroContent.title.split(', ');
+
     return (
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-            {/* Background with gradient overlay */}
-            <div className="absolute inset-0">
-                <div className="absolute inset-0 bg-gradient-to-r from-red-900/80 via-red-800/70 to-red-900/80"></div>
-            </div>
-
-            {/* Hero Content */}
-            <div className="relative z-10 text-center text-white px-6 max-w-4xl mx-auto">
-                <div className="animate-fade-in-up">
-                    <TypingText
-                        text={[
-                            'Daruj krv, spasi život',
-                            'Daruj krv, spasi život'
-                        ]}
-                        typingSpeed={75}
-                        pauseDuration={1500}
-                        showCursor={false}                        
-                        cursorCharacter="|"
-                        className="text-5xl md:text-7xl font-bold mb-6 leading-tight drop-shadow-2xl/70"                        
-                        variableSpeed={{ min: 50, max: 120 }}
-                    />                    
-                    <p className="text-xl md:text-2xl mb-8 text-red-100 max-w-2xl mx-auto leading-relaxed">
-                        Pridružite se našoj zajednici darivatelja krvi i
-                        pomozite spasiti živote
+        <section id="pocetna" className={styles.hero}>
+            <div className={`container ${styles.layout}`}>
+                <div className={styles.copy}>
+                    <h1 className="display display--xl" data-reveal="words">
+                        <span className={styles.titleLine}>
+                            <SplitWords text={`${titleLead},`} />
+                        </span>{' '}
+                        <span
+                            className={`${styles.titleLine} ${styles.accent}`}
+                        >
+                            <SplitWords text={titleAccent} delay={160} />
+                        </span>
+                    </h1>
+                    <p
+                        className={`lede ${styles.description}`}
+                        data-reveal
+                        style={{ '--reveal-delay': '450ms' } as CSSVars}
+                    >
+                        {heroContent.description}
                     </p>
-                    <div>
-                        <Button
-                            size="lg"
-                            className="bg-white text-red-700 hover:bg-red-50 px-8 py-7 text-lg font-semibold rounded-full shadow-2xl hover:shadow-red-500/25 transition-all duration-300 hover:scale-105"
-                            onClick={() =>
-                                document
-                                    .getElementById('zasto-dariti-krv')
-                                    ?.scrollIntoView({ behavior: 'smooth' })
-                            }
+                    <div
+                        className={styles.actions}
+                        data-reveal
+                        style={{ '--reveal-delay': '560ms' } as CSSVars}
+                    >
+                        <a
+                            className="button button--solid"
+                            href={heroContent.primaryCta.href}
                         >
-                            Zašto darivati krv
-                        </Button>
-                    </div>
-                    <div>
-                        <Button
-                            size="lg"
-                            className="mt-4 bg-white text-red-700 hover:bg-red-50 px-8 py-4 text-lg font-semibold rounded-full shadow-2xl hover:shadow-red-500/25 transition-all duration-300 hover:scale-105"
-                            onClick={() =>
-                                document
-                                    .getElementById('pridruzi')
-                                    ?.scrollIntoView({ behavior: 'smooth' })
-                            }
+                            {heroContent.primaryCta.label}
+                            <ArrowRight aria-hidden="true" />
+                        </a>
+                        <a
+                            className="button button--outline"
+                            data-direction="down"
+                            href={heroContent.secondaryCta.href}
                         >
-                            Već daruješ krv
-                        </Button>
+                            {heroContent.secondaryCta.label}
+                            <ArrowDown aria-hidden="true" />
+                        </a>
                     </div>
-                    {/* <div>
-                        <div className="inline-flex items-center gap-2 px-4 py-2 mt-4 bg-white/15 backdrop-blur-sm rounded-full border border-white/25 shadow-lg">
-                            <span className="text-white font-medium text-sm">Hrvatski Crveni križ - Gradsko društvo Crvenog križa Buje</span>
-                        </div>
-                    </div> */}
+                </div>
+
+                <div className={styles.art}>
+                    <DropShape className={styles.pulse} />
+                    <DropShape className={styles.pulse} data-late="true" />
+                    <DropShape className={styles.backing} />
+                    <div className={styles.photo}>
+                        <Image
+                            src="/hero-donor.webp"
+                            alt="Darivanje krvi u svijetloj transfuzijskoj ambulanti"
+                            width={1440}
+                            height={1920}
+                            priority
+                            sizes="(max-width: 56rem) 190vw, 80vw"
+                        />
+                    </div>
                 </div>
             </div>
 
-            {/* Scroll indicator */}
-            <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-                <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
-                    <div className="w-1 h-3 bg-white/60 rounded-full mt-2 animate-pulse"></div>
-                </div>
-            </div>
+            {nextAction && (
+                <a href="#sljedece-akcije" className={styles.next}>
+                    <span className={`container ${styles.nextInner}`}>
+                        <span className={styles.nextLabel}>
+                            <DropShape className={styles.nextDrop} />
+                            {eventsContent.title}
+                        </span>
+                        <strong className={styles.nextTitle}>
+                            {nextAction.title}
+                        </strong>
+                        {nextAction.time && (
+                            <span className={styles.nextMeta}>
+                                <Clock aria-hidden="true" />
+                                {nextAction.time}
+                            </span>
+                        )}
+                        {nextAction.location && (
+                            <span className={styles.nextMeta}>
+                                <MapPin aria-hidden="true" />
+                                {nextAction.location}
+                            </span>
+                        )}
+                        <ArrowDown
+                            className={styles.nextArrow}
+                            aria-hidden="true"
+                        />
+                    </span>
+                </a>
+            )}
         </section>
     );
 }
+
+type CSSVars = React.CSSProperties & Record<`--${string}`, string>;

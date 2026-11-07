@@ -1,0 +1,197 @@
+.header {
+    position: fixed;
+    inset: 0 0 auto;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding: 0.75rem var(--gutter);
+    transition:
+        transform 0.45s var(--ease-out),
+        background-color 0.25s,
+        box-shadow 0.25s;
+}
+
+.header[data-compact="true"] {
+    background: var(--stone);
+    box-shadow: 0 1px 0 var(--line);
+}
+
+.header[data-hidden="true"] {
+    transform: translateY(-105%);
+}
+
+.brand {
+    display: flex;
+    flex: none;
+    align-items: center;
+    gap: 0.625rem;
+    font-family: var(--font-display);
+    font-size: 1.0625rem;
+    font-weight: 800;
+    letter-spacing: -0.015em;
+    text-decoration: none;
+}
+
+.brand img {
+    width: 2.75rem;
+    height: 2.75rem;
+}
+
+.links {
+    display: none;
+    align-items: center;
+    gap: 0.25rem;
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.links a {
+    position: relative;
+    padding: 0.625rem 0.875rem;
+    border-radius: 999px;
+    text-decoration: none;
+    transition:
+        background-color 0.2s,
+        color 0.2s;
+}
+
+/* The current section is marked with a small drop under its label. */
+.links a::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0.1rem;
+    width: 0.4rem;
+    height: 0.4rem;
+    border-radius: 50% 50% 50% 0;
+    background: var(--red);
+    transform: translateX(-50%) rotate(-45deg) scale(0);
+    transition: transform 0.4s var(--ease-settle);
+}
+
+.links a[aria-current="location"]::after {
+    transform: translateX(-50%) rotate(-45deg) scale(1);
+}
+
+.links a[data-featured="true"] {
+    margin-inline: 0.375rem;
+    background: var(--red);
+    color: var(--stone);
+}
+
+.links a[data-featured="true"]::after {
+    background: var(--red);
+    bottom: -0.45rem;
+}
+
+@media (hover: hover) {
+    .links a:hover {
+        background: var(--blush);
+    }
+
+    .links a[data-featured="true"]:hover {
+        background: var(--red-deep);
+    }
+}
+
+.menuButton,
+.closeButton {
+    display: grid;
+    flex: none;
+    place-items: center;
+    width: 3.25rem;
+    height: 3.25rem;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.menuButton {
+    background: var(--red);
+    color: var(--stone);
+}
+
+.closeButton {
+    position: absolute;
+    top: 0.75rem;
+    right: var(--gutter);
+    background: var(--stone);
+    color: var(--red);
+}
+
+.menu {
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    display: flex;
+    align-items: flex-end;
+    padding: 5rem var(--gutter) max(2.5rem, env(safe-area-inset-bottom));
+    overflow-y: auto;
+    background: var(--red);
+    color: var(--stone);
+    clip-path: circle(0 at calc(100% - var(--gutter) - 1.625rem) 2.375rem);
+    visibility: hidden;
+    transition:
+        clip-path 0.6s var(--ease-out),
+        visibility 0s linear 0.6s;
+}
+
+.menu[data-open="true"] {
+    clip-path: circle(
+        150vmax at calc(100% - var(--gutter) - 1.625rem) 2.375rem
+    );
+    visibility: visible;
+    transition:
+        clip-path 0.7s var(--ease-out),
+        visibility 0s;
+}
+
+.menu nav {
+    display: grid;
+    width: 100%;
+}
+
+.menu nav a {
+    padding-block: 0.5rem;
+    border-bottom: 1px solid color-mix(in srgb, var(--stone) 30%, transparent);
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 8.5vw, 3.5rem);
+    font-variation-settings: "opsz" 96;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    text-decoration: none;
+    opacity: 0;
+    transform: translateY(1.5rem);
+    transition:
+        opacity 0.35s,
+        transform 0.7s var(--ease-settle);
+}
+
+.menu[data-open="true"] nav a {
+    opacity: 1;
+    transform: none;
+}
+
+@media (min-width: 75rem) {
+    .links {
+        display: flex;
+    }
+
+    .menuButton {
+        display: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .header,
+    .menu,
+    .menu[data-open="true"],
+    .menu nav a {
+        transition: none;
+    }
+}
