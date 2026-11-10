@@ -15,7 +15,7 @@ const literata = Literata({
 });
 
 export const metadata: Metadata = {
-    title: 'HCK GDCK Buje - Daruj krv, spasi život',
+    title: 'HCK GDCK Buje – Daruj krv, spasi život',
     description:
         'Stranica Hrvatskog Crvenog križa, Gradskog društva Crvenog križa Buje za promicanje darivanja krvi na području Bujštine (Umag, Buje, Novigrad).',
     keywords: [
@@ -28,43 +28,42 @@ export const metadata: Metadata = {
         'hrvatski crveni križ',
     ],
     authors: [
-        { name: 'Hrvatski Crveni Križ - Gradsko društvo Crvenog križa Buje' },
+        { name: 'Hrvatski Crveni križ – Gradsko društvo Crvenog križa Buje' },
     ],
-    creator: 'Hrvatski Crveni Križ',
-    publisher: 'Hrvatski Crveni Križ',
+    creator: 'Hrvatski Crveni križ',
+    publisher: 'Hrvatski Crveni križ',
     formatDetection: {
         email: false,
         address: false,
         telephone: false,
     },
-    metadataBase: new URL('https://www.crvenikrizbujedarivatelji.gdckapp.com'), // Replace with your actual domain
+    metadataBase: new URL('https://www.crvenikrizbujedarivatelji.gdckapp.com'),
     alternates: {
         canonical: '/',
     },
     openGraph: {
         type: 'website',
         locale: 'hr_HR',
-        url: 'https://www.crvenikrizbujedarivatelji.gdckapp.com', // Replace with your actual domain
-        title: 'HCK GDCK Buje - Daruj krv, spasi život',
+        url: 'https://www.crvenikrizbujedarivatelji.gdckapp.com',
+        title: 'HCK GDCK Buje – Daruj krv, spasi život',
         description:
             'Stranica Hrvatskog Crvenog križa, Gradskog društva Crvenog križa Buje za promicanje darivanja krvi na području Bujštine (Umag, Buje, Novigrad).',
-        siteName: 'Hrvatski Crveni Križ - GDCK Buje',
+        siteName: 'Hrvatski Crveni križ – GDCK Buje',
         images: [
             {
-                url: '/logo.webp', // You'll need to add this image to your public folder
+                url: '/logo.webp',
                 width: 1024,
                 height: 1024,
-                alt: 'Hrvatski Crveni Križ GDCK Buje - Daruj krv, spasi život',
+                alt: 'Hrvatski Crveni križ GDCK Buje – Daruj krv, spasi život',
             },
         ],
     },
     twitter: {
-        card: 'summary_large_image',
-        title: 'HCK GDCK Buje - Daruj krv, spasi život',
+        card: 'summary',
+        title: 'HCK GDCK Buje – Daruj krv, spasi život',
         description:
             'Stranica Hrvatskog Crvenog križa, Gradskog društva Crvenog križa Buje za promicanje darivanja krvi na području Bujštine (Umag, Buje, Novigrad).',
-        images: ['/logo.webp'], // Same image as Open Graph
-        creator: '@crvenikriz', // Replace with actual Twitter handle if available
+        images: ['/logo.webp'],
     },
     robots: {
         index: true,
@@ -86,7 +85,7 @@ export const metadata: Metadata = {
         ],
         apple: [
             {
-                url: '/apple-touch-icon.png', // You'll need to add this icon
+                url: '/apple-touch-icon.png',
                 sizes: '180x180',
                 type: 'image/png',
             },

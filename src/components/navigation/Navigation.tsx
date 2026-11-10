@@ -113,7 +113,7 @@ export function Navigation() {
                 <a
                     href="#pocetna"
                     className={styles.brand}
-                    aria-label="Crveni Križ Buje — Naslovnica"
+                    aria-label="Crveni križ Buje — Naslovnica"
                 >
                     <Image
                         src="/logo-transparent.webp"
@@ -122,7 +122,7 @@ export function Navigation() {
                         height={44}
                         priority
                     />
-                    <span>Crveni Križ Buje</span>
+                    <span>Crveni križ Buje</span>
                 </a>
 
                 <nav className={styles.links} aria-label="Glavna navigacija">
@@ -145,7 +145,7 @@ export function Navigation() {
                     ref={openButtonRef}
                     type="button"
                     className={styles.menuButton}
-                    aria-label="Menu"
+                    aria-label="Izbornik"
                     aria-expanded={isMenuOpen}
                     aria-controls="mobile-navigation"
                     onClick={() => setIsMenuOpen(true)}

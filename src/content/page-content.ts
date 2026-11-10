@@ -107,7 +107,7 @@ export const heroContent = {
         href: '#zasto-dariti-krv',
     },
     secondaryCta: {
-        label: 'Već daruješ krv',
+        label: 'Već darujete krv',
         href: '#pridruzi',
     },
 };
@@ -121,14 +121,15 @@ export const whyDonateContent = {
 export const benefits: Benefit[] = [
     {
         icon: 'heart',
-        title: 'Jedna doza spašava 3 života',
-        description: 'Vaša donacija dovoljna je za 3 doze krvi',
+        title: 'Jedna doza može spasiti 3 života',
+        description:
+            'Vaša krv razdvaja se na crvene krvne stanice, plazmu i trombocite, koji mogu pomoći različitim bolesnicima',
     },
     {
         icon: 'clock',
         title: 'Traje samo 10 minuta',
         description:
-            'Brzo i jednostavno - manje vremena nego što trebate za kavu',
+            'Brzo i jednostavno – manje vremena nego što trebate za kavu',
     },
     {
         icon: 'shield',
@@ -139,7 +140,7 @@ export const benefits: Benefit[] = [
         icon: 'gift',
         title: 'Pogodnosti za darivatelje',
         description:
-            'Besplatno dopunsko zdravstveno osiguranje i posebne povlastice',
+            'Besplatno dopunsko zdravstveno osiguranje nakon više od 35 (muškarci) odnosno 25 (žene) darivanja i posebne povlastice',
         link: {
             label: 'Više o pogodnostima',
             href: 'https://www.hck.hr/pogodnosti-za-clanove/12021',
@@ -150,7 +151,7 @@ export const benefits: Benefit[] = [
 export const communityContent = {
     title: 'Pridruži se zajednici',
     description:
-        'Budi dio naše zajednice darivatelja krvi i primi obavijesti o nadolazećim akcijama darivanja krvi. Otvoreno je za sve - i za one koji već daruju i za one koji se tek planiraju pridružiti.',
+        'Budite dio naše zajednice darivatelja krvi i primajte obavijesti o nadolazećim akcijama darivanja krvi. Otvoreno je za sve – i za one koji već daruju i za one koji se tek planiraju pridružiti.',
     badges: ['Besplatno', 'Na vrijeme', 'Možete se odjaviti u svakom trenutku'],
 };
 
@@ -219,10 +220,10 @@ export const processContent = {
         'Proces donacije je jednostavan, siguran i traje manje od sat vremena od početka do kraja.',
     preparationTitle: 'Prije dolaska',
     preparationItems: [
-        'Pojedite zdrav obrok i ostanite hidrirani',
+        'Pojedite lagani obrok i pijte dovoljno bezalkoholne tekućine',
         'Dobro se naspavajte',
-        'Ponesite valjanu osobnu iskaznicu s fotografijom',
-        'Izbjegavajte alkohol 24 sata prije donacije',
+        'Ponesite osobnu iskaznicu ili putovnicu i zdravstvenu iskaznicu',
+        'Izbjegavajte alkohol i izrazito masnu hranu 8 sati prije darivanja',
     ],
 };
 
@@ -230,7 +231,8 @@ export const processSteps: ProcessStep[] = [
     {
         icon: 'user-check',
         title: 'Registracija',
-        description: 'Registracija, popunjavanje ankete i zdravstveni pregled',
+        description:
+            'Registracija, popunjavanje upitnika i zdravstveni pregled',
         time: '10-15 min',
     },
     {
@@ -360,7 +362,7 @@ export const donationActions: DonationAction[] = [
         location: 'Sportska dvorana',
         address: 'Marketi 2, 52466 Novigrad',
         description:
-            'Za točnu lokaciju prati naše objave na društvenim mrežama i lokalnim medijima.',
+            'Za točnu lokaciju pratite naše objave na društvenim mrežama i lokalnim medijima.',
     },
     {
         date: new Date('2026-02-13'),
@@ -369,7 +371,7 @@ export const donationActions: DonationAction[] = [
         location: 'Zajednica Talijana Buje',
         address: 'Trg Josipa Broza Tita 17, 52460 Buje',
         description:
-            'Za točnu lokaciju prati naše objave na društvenim mrežama i lokalnim medijima.',
+            'Za točnu lokaciju pratite naše objave na društvenim mrežama i lokalnim medijima.',
     },
     {
         date: new Date('2026-03-24'),
@@ -378,7 +380,7 @@ export const donationActions: DonationAction[] = [
         location: 'Zajednica Talijana Umag',
         address: 'Brolo 1, 52470 Umag',
         description:
-            'Za točnu lokaciju prati naše objave na društvenim mrežama i lokalnim medijima.',
+            'Za točnu lokaciju pratite naše objave na društvenim mrežama i lokalnim medijima.',
     },
     {
         date: new Date('2026-04-10'),
@@ -387,7 +389,7 @@ export const donationActions: DonationAction[] = [
         location: 'Sportska dvorana',
         address: 'Marketi 2, 52466 Novigrad',
         description:
-            'Za točnu lokaciju prati naše objave na društvenim mrežama i lokalnim medijima.',
+            'Za točnu lokaciju pratite naše objave na društvenim mrežama i lokalnim medijima.',
     },
     {
         date: new Date('2026-04-27'),
@@ -396,7 +398,7 @@ export const donationActions: DonationAction[] = [
         location: 'Zajednica Talijana Umag',
         address: 'Brolo 1, 52470 Umag',
         description:
-            'Za točnu lokaciju prati naše objave na društvenim mrežama i lokalnim medijima.',
+            'Za točnu lokaciju pratite naše objave na društvenim mrežama i lokalnim medijima.',
     },
     {
         date: new Date('2026-05-13'),
@@ -405,7 +407,7 @@ export const donationActions: DonationAction[] = [
         location: 'Zajednica Talijana Buje',
         address: 'Trg Josipa Broza Tita 17, 52460 Buje',
         description:
-            'Za točnu lokaciju prati naše objave na društvenim mrežama i lokalnim medijima.',
+            'Za točnu lokaciju pratite naše objave na društvenim mrežama i lokalnim medijima.',
     },
     {
         date: new Date('2026-06-23'),
@@ -414,7 +416,7 @@ export const donationActions: DonationAction[] = [
         location: 'Zajednica Talijana Umag',
         address: 'Brolo 1, 52470 Umag',
         description:
-            'Za točnu lokaciju prati naše objave na društvenim mrežama i lokalnim medijima.',
+            'Za točnu lokaciju pratite naše objave na društvenim mrežama i lokalnim medijima.',
     },
     {
         date: new Date('2026-07-13'),
@@ -423,7 +425,7 @@ export const donationActions: DonationAction[] = [
         location: 'Sportska dvorana',
         address: 'Marketi 2, 52466 Novigrad',
         description:
-            'Za točnu lokaciju prati naše objave na društvenim mrežama i lokalnim medijima.',
+            'Za točnu lokaciju pratite naše objave na društvenim mrežama i lokalnim medijima.',
     },
     {
         date: new Date('2026-08-12'),
@@ -432,7 +434,7 @@ export const donationActions: DonationAction[] = [
         location: 'Zajednica Talijana Buje',
         address: 'Trg Josipa Broza Tita 17, 52460 Buje',
         description:
-            'Za točnu lokaciju prati naše objave na društvenim mrežama i lokalnim medijima.',
+            'Za točnu lokaciju pratite naše objave na društvenim mrežama i lokalnim medijima.',
     },
     {
         date: new Date('2026-09-21'),
@@ -441,7 +443,7 @@ export const donationActions: DonationAction[] = [
         location: 'Zajednica Talijana Umag',
         address: 'Brolo 1, 52470 Umag',
         description:
-            'Za točnu lokaciju prati naše objave na društvenim mrežama i lokalnim medijima.',
+            'Za točnu lokaciju pratite naše objave na društvenim mrežama i lokalnim medijima.',
     },
     {
         date: new Date('2026-10-12'),
@@ -450,7 +452,7 @@ export const donationActions: DonationAction[] = [
         location: 'Sportska dvorana',
         address: 'Marketi 2, 52466 Novigrad',
         description:
-            'Za točnu lokaciju prati naše objave na društvenim mrežama i lokalnim medijima.',
+            'Za točnu lokaciju pratite naše objave na društvenim mrežama i lokalnim medijima.',
     },
     {
         date: new Date('2026-11-09'),
@@ -459,7 +461,7 @@ export const donationActions: DonationAction[] = [
         location: 'Zajednica Talijana Buje',
         address: 'Trg Josipa Broza Tita 17, 52460 Buje',
         description:
-            'Za točnu lokaciju prati naše objave na društvenim mrežama i lokalnim medijima.',
+            'Za točnu lokaciju pratite naše objave na društvenim mrežama i lokalnim medijima.',
     },
     {
         date: new Date('2026-12-22'),
@@ -468,7 +470,7 @@ export const donationActions: DonationAction[] = [
         location: 'Zajednica Talijana Umag',
         address: 'Brolo 1, 52470 Umag',
         description:
-            'Za točnu lokaciju prati naše objave na društvenim mrežama i lokalnim medijima.',
+            'Za točnu lokaciju pratite naše objave na društvenim mrežama i lokalnim medijima.',
     },
 ];
 
@@ -506,18 +508,18 @@ export const faqItems: FAQItem[] = [
     {
         id: 3,
         question: 'Kada darivati krv?',
-        answer: 'Stanje zaliha doza krvi Vaše krvne grupe možete saznati na stranici Hrvatskog zavoda za transfuzijsku medicinu. Ako su trenutačne zalihe krvi Vaše krvne grupe ispod oznake premale zalihe, molimo Vas darujte krv. Ako su trenutačne količine krvi Vaše krvne grupe iznad oznake prevelike zalihe, molimo Vas privremeno odgodite darivanje dok se zalihe Vaše krvne grupe ne smanje. Muškarci mogu darivati krv svaka 3 mjeseca (do 7 dana ranije), a žene svaka 4 mjeseca (do 7 dana ranije). Podatak o datumu prethodnog darivanja nalazi se u Vašoj Iskaznici darivatelja. Ako nemate Iskaznicu darivatelja taj podatak možete dobiti na broj telefona 01/4600-337.',
+        answer: 'Stanje zaliha doza krvi vaše krvne grupe možete saznati na stranici Hrvatskog zavoda za transfuzijsku medicinu. Ako su trenutačne zalihe krvi vaše krvne grupe ispod oznake premale zalihe, molimo vas darujte krv. Ako su trenutačne količine krvi vaše krvne grupe iznad oznake prevelike zalihe, molimo vas privremeno odgodite darivanje dok se zalihe vaše krvne grupe ne smanje. Muškarci mogu darivati krv svaka 3 mjeseca (do 7 dana ranije), a žene svaka 4 mjeseca (do 7 dana ranije). Podatak o datumu prethodnog darivanja nalazi se u vašoj Iskaznici darivatelja. Ako nemate Iskaznicu darivatelja taj podatak možete dobiti na broj telefona 01/4600-337.',
         link: bloodSupplyLink,
     },
     {
         id: 4,
         question: 'Što se preporuča prije darivanja krvi?',
-        answer: 'Pojedite lagani obrok i uzmite dovoljno bezalkoholne tekućine. Pripremite osobnu iskaznicu ili putovnicu i zdravstvenu iskaznicu. Ponesite i Iskaznicu darivatelja krvi, kako bi Vam mogli upisati darivanje.',
+        answer: 'Pojedite lagani obrok i uzmite dovoljno bezalkoholne tekućine. Pripremite osobnu iskaznicu ili putovnicu i zdravstvenu iskaznicu. Ponesite i Iskaznicu darivatelja krvi, kako bi vam mogli upisati darivanje.',
     },
     {
         id: 5,
-        question: 'Mora li se prije darivanja biti "na tašte"?',
-        answer: 'Prije davanja krvi nije potrebno biti natašte. Davanje krvi je sastavni dio svakodnevnog ljudskog načina života i čovjek na taj dan treba uobičajeno jesti i piti. Osjećat ćete se bolje ako nekoliko sati prije davanja krvi pojedete lagani obrok. Jedino Vas molimo da unutar 8 sati prije davanja krvi ne jedete izrazito masnu hranu i ne pijete alkohol jer njihovi sastojci mogu transfuzijom krvi biti uneseni u bolesnika i nanijeti mu štetu.',
+        question: 'Mora li se prije darivanja biti natašte?',
+        answer: 'Prije davanja krvi nije potrebno biti natašte. Davanje krvi je sastavni dio svakodnevnog ljudskog načina života i čovjek na taj dan treba uobičajeno jesti i piti. Osjećat ćete se bolje ako nekoliko sati prije davanja krvi pojedete lagani obrok. Jedino vas molimo da unutar 8 sati prije davanja krvi ne jedete izrazito masnu hranu i ne pijete alkohol jer njihovi sastojci mogu transfuzijom krvi biti uneseni u bolesnika i nanijeti mu štetu.',
     },
     {
         id: 6,
@@ -526,8 +528,8 @@ export const faqItems: FAQItem[] = [
     },
     {
         id: 7,
-        question: 'Zašto se daruje 450ml krvi?',
-        answer: 'Organizam odrasle osobe, tjelesne težine iznad 55 kg ima više od 4,5 L krvi. Prosječno, krv čini 12% tjelesne težine čovjeka. Gubitak krvi do 15% organizam podnosi bez ikakvih popratnih pojava. Darivanjem 450mL krvi organizam gubi manje od 10% ukupne količine krvi.',
+        question: 'Zašto se daruje 450 ml krvi?',
+        answer: 'Organizam odrasle osobe, tjelesne težine iznad 55 kg ima više od 4,5 l krvi. Prosječno, krv čini 12% tjelesne težine čovjeka. Gubitak krvi do 15% organizam podnosi bez ikakvih popratnih pojava. Darivanjem 450 ml krvi organizam gubi manje od 10% ukupne količine krvi.',
     },
     {
         id: 8,
@@ -548,7 +550,7 @@ export const contactContent = {
 };
 
 export const footerContent = {
-    organization: 'Hrvatski Crveni Križ - Gradsko društvo Crvenog križa Buje',
-    tagline: 'Spašavamo živote zajedno - gradimo sigurnije društvo',
-    copyright: `© ${new Date().getFullYear()} Hrvatski Crveni križ - Gradsko društvo Crvenog križa Buje. Sva prava pridržana.`,
+    organization: 'Hrvatski Crveni križ – Gradsko društvo Crvenog križa Buje',
+    tagline: 'Spašavamo živote zajedno – gradimo sigurnije društvo',
+    copyright: `© ${new Date().getFullYear()} Hrvatski Crveni križ – Gradsko društvo Crvenog križa Buje. Sva prava pridržana.`,
 };
