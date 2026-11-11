@@ -89,18 +89,16 @@
     transition: color 0.25s;
 }
 
-/* The channel's colour floods out from its icon on hover. */
+/* The channel's colour floods out from its icon. A clip-path circle sized in
+   percent always covers the whole button, however wide it is. */
 .channel::before {
+    --origin: 2.625rem 50%;
     content: "";
     position: absolute;
-    top: 50%;
-    left: 2.625rem;
-    width: 3.5rem;
-    aspect-ratio: 1;
-    border-radius: 50%;
+    inset: 0;
     background: var(--accent);
-    transform: translate(-50%, -50%) scale(1);
-    transition: transform 0.6s var(--ease-out);
+    clip-path: circle(1.75rem at var(--origin));
+    transition: clip-path 0.6s var(--ease-out);
 }
 
 .channelIcon,
@@ -129,13 +127,21 @@
     transition: transform 0.35s var(--ease-settle);
 }
 
+.channel:focus-visible {
+    color: #fff;
+}
+
+.channel:focus-visible::before {
+    clip-path: circle(150% at var(--origin));
+}
+
 @media (hover: hover) {
     .channel:hover {
         color: #fff;
     }
 
     .channel:hover::before {
-        transform: translate(-50%, -50%) scale(14);
+        clip-path: circle(150% at var(--origin));
     }
 
     .channel:hover .channelArrow {
