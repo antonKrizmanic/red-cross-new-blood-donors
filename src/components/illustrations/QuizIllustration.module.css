@@ -1,0 +1,161 @@
+/* Resting state is the final drawing; motion only plays once revealed. */
+.card {
+    transform-box: view-box;
+    transform-origin: 170px 150px;
+    transform: rotate(-3deg);
+}
+
+.paper {
+    fill: var(--stone);
+}
+
+.line {
+    fill: var(--oxblood);
+    opacity: 0.85;
+}
+
+.answer {
+    fill: var(--blush);
+}
+
+.dot {
+    fill: var(--stone);
+}
+
+.answerLine {
+    fill: var(--oxblood);
+    opacity: 0.35;
+}
+
+.option[data-correct="true"] .answer {
+    fill: var(--red);
+}
+
+.option[data-correct="true"] .dot {
+    fill: var(--stone);
+}
+
+.option[data-correct="true"] .answerLine {
+    fill: var(--stone);
+    opacity: 0.7;
+}
+
+.check {
+    fill: none;
+    stroke: var(--red);
+    stroke-width: 3.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 1;
+}
+
+.badge circle:first-child {
+    fill: var(--sun);
+}
+
+.badge {
+    transform-box: fill-box;
+    transform-origin: center;
+}
+
+.question {
+    fill: none;
+    stroke: var(--oxblood);
+    stroke-width: 8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.questionDot {
+    fill: var(--oxblood);
+}
+
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+    :global(.is-visible) .option {
+        animation: slide-in 0.7s var(--ease-settle) var(--delay) both;
+    }
+
+    :global(.is-visible) .option[data-correct="true"] .answer {
+        animation: mark 0.35s ease-out var(--mark-delay) both;
+    }
+
+    :global(.is-visible) .option[data-correct="true"] .answerLine {
+        animation: mark-line 0.35s ease-out var(--mark-delay) both;
+    }
+
+    :global(.is-visible) .check {
+        animation: draw 0.35s ease-out calc(var(--mark-delay) + 0.15s) both;
+    }
+
+    :global(.is-visible) .badge {
+        animation:
+            pop 0.6s var(--ease-settle) 0.1s both,
+            wobble 3.6s ease-in-out 1.8s infinite;
+    }
+
+    @keyframes slide-in {
+        from {
+            opacity: 0;
+            transform: translateX(40px);
+        }
+        to {
+            opacity: 1;
+            transform: none;
+        }
+    }
+
+    @keyframes mark {
+        from {
+            fill: var(--blush);
+        }
+        to {
+            fill: var(--red);
+        }
+    }
+
+    @keyframes mark-line {
+        from {
+            fill: var(--oxblood);
+            opacity: 0.35;
+        }
+        to {
+            fill: var(--stone);
+            opacity: 0.7;
+        }
+    }
+
+    @keyframes draw {
+        from {
+            stroke-dashoffset: 1;
+        }
+        to {
+            stroke-dashoffset: 0;
+        }
+    }
+
+    @keyframes pop {
+        from {
+            transform: scale(0);
+        }
+        to {
+            transform: scale(1);
+        }
+    }
+
+    @keyframes wobble {
+        0%,
+        70%,
+        100% {
+            transform: rotate(0deg);
+        }
+        78% {
+            transform: rotate(-10deg);
+        }
+        86% {
+            transform: rotate(8deg);
+        }
+        94% {
+            transform: rotate(-3deg);
+        }
+    }
+}

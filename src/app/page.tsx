@@ -8,6 +8,7 @@ import {
     HeroSection,
     JoinCommunitySection,
     ProcessSection,
+    QuizSection,
     UpcomingEventsSection,
     WhyDonateSection,
 } from '@/components/sections';
@@ -38,6 +39,7 @@ export default function Home() {
             <main>
                 <HeroSection nextAction={upcomingActions[0]} />
                 <WhyDonateSection />
+                <QuizSection />
                 <EligibilitySection />
                 <ProcessSection />
                 <UpcomingEventsSection actions={upcomingActions} />
