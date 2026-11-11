@@ -538,6 +538,14 @@ export const faqItems: FAQItem[] = [
     },
 ];
 
+export const quizContent = {
+    title: 'Koliko znate o darivanju krvi?',
+    description:
+        'Riješite kratki kviz i provjerite svoje znanje o dobrovoljnom darivanju krvi. Pazite, neka pitanja imaju više od jednog točnog odgovora!',
+    ctaLabel: 'Riješite kviz',
+    href: 'https://www.kviz.gdckapp.com/quiz/take/2/4epYT8gsZ9QdiNsb0AdYwkrlUDShS1s_0QN1HSHWZWM',
+};
+
 export const contactContent = {
     title: 'Kontakt',
     description: 'Javite nam se za sve informacije o darivanju krvi',
