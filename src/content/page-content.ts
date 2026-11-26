@@ -562,3 +562,79 @@ export const footerContent = {
     tagline: 'Spašavamo živote zajedno – gradimo sigurnije društvo',
     copyright: `© ${new Date().getFullYear()} Hrvatski Crveni križ – Gradsko društvo Crvenog križa Buje. Sva prava pridržana.`,
 };
+
+export type MobileAppFeature = {
+    icon: 'history' | 'calendar' | 'droplets' | 'hand-heart';
+    title: string;
+    description: string;
+};
+
+export const mobileAppContent = {
+    name: 'eKnjižica',
+    eyebrow: 'Mobilna aplikacija za darivatelje',
+    description:
+        'Vaša evidencija darivanja krvi uvijek pri ruci: broj i povijest darivanja, najavljene akcije i zalihe krvi na jednom mjestu.',
+    badges: ['Besplatno', 'iPhone i Android', 'Hrvatski i talijanski'],
+    access: 'Prijavljujete se OIB-om i emailom koje vaše društvo Crvenog križa ima u evidenciji, a prijavu potvrđujete jednokratnim kodom poslanim na email.',
+    appStoreLabel: 'Preuzmite eKnjižicu u App Storeu',
+    googlePlayLabel: 'Preuzmite eKnjižicu na Google Playu',
+    platformLabels: {
+        ios: 'Za iPhone i iPad',
+        android: 'Za Android',
+        other: 'Za iPhone i Android',
+    },
+    otherStoreLabels: {
+        ios: 'Imate Android? Preuzmite s Google Playa',
+        android: 'Imate iPhone? Preuzmite iz App Storea',
+    },
+    openAppLabel: 'Već imate eKnjižicu? Otvorite aplikaciju',
+    webAppLabel: 'Radije bez instalacije? Otvorite eKnjižicu u pregledniku',
+    qrTitle: 'Skenirajte mobitelom',
+    qrDescription:
+        'Kamerom mobitela skenirajte kod i otvorit će se ova stranica s trgovinom za vaš uređaj.',
+    qrAlt: 'QR kod s poveznicom na stranicu za preuzimanje eKnjižice',
+    shareLabel: 'Podijelite poveznicu',
+    copiedLabel: 'Poveznica je kopirana',
+    shareTitle: 'eKnjižica – mobilna aplikacija za darivatelje krvi',
+    screenshotAlt:
+        'Zaslon eKnjižice sa zalihama krvi po krvnim grupama prema podacima Hrvatskog zavoda za transfuzijsku medicinu',
+    featuresTitle: 'Što donosi aplikacija',
+    homeLabel: 'Natrag na naslovnicu',
+    nextActionLabel: 'Aplikacija vas informira, a život spašava vaš dolazak',
+    nextActionFallback: 'Pogledajte sljedeće akcije darivanja',
+    promoTitle: 'eKnjižica na mobitelu',
+    promoDescription:
+        'Već darujete krv? Broj i povijest darivanja te najavljene akcije pratite u aplikaciji.',
+    promoLinkLabel: 'Više o aplikaciji',
+    footerTitle: 'eKnjižica – mobilna aplikacija za darivatelje',
+    footerLinkLabel: 'Preuzimanje i QR kod',
+    trademarks:
+        'Apple i logotip Apple zaštitni su znakovi tvrtke Apple Inc., registrirani u SAD-u i drugim zemljama. App Store uslužni je znak tvrtke Apple Inc. Google Play i logotip Google Play zaštitni su znakovi tvrtke Google LLC.',
+};
+
+export const mobileAppFeatures: MobileAppFeature[] = [
+    {
+        icon: 'history',
+        title: 'Povijest darivanja',
+        description:
+            'Broj darivanja, krvna grupa, datum zadnjeg darivanja i napredak prema priznanjima.',
+    },
+    {
+        icon: 'calendar',
+        title: 'Akcije darivanja',
+        description:
+            'Najavljene akcije s datumom i mjestom. Odabranu akciju dodajte u kalendar mobitela.',
+    },
+    {
+        icon: 'droplets',
+        title: 'Zalihe krvi',
+        description:
+            'Zalihe po krvnim grupama prema podacima Hrvatskog zavoda za transfuzijsku medicinu.',
+    },
+    {
+        icon: 'hand-heart',
+        title: 'Volontiranje i zahtjevi',
+        description:
+            'Volonterski sati i aktivnosti te zahtjevi za ispravak podataka vašem društvu.',
+    },
+];

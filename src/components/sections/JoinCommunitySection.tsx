@@ -1,5 +1,6 @@
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import type { CSSProperties, ReactNode } from 'react';
+import { StoreBadges } from '@/components/mobile-app/StoreBadges';
 import { EditorialIcon } from '@/components/ui/editorial-icon';
 import { FacebookIcon } from '@/components/ui/icons/facebook-icon';
 import { InstagramIcon } from '@/components/ui/icons/instagram-icon';
@@ -13,7 +14,9 @@ import {
     communityChannels,
     communityContent,
     communityValues,
+    mobileAppContent,
 } from '@/content/page-content';
+import { MOBILE_APP_DOWNLOAD_PATH } from '@/lib/mobile-app';
 import styles from './JoinCommunitySection.module.css';
 
 const channelIcons: Record<ChannelIcon, ReactNode> = {
@@ -68,6 +71,19 @@ export function JoinCommunitySection() {
                             </li>
                         ))}
                     </ul>
+                    <div
+                        className={styles.app}
+                        data-reveal="paper"
+                        style={{ '--reveal-rotate': '1deg' } as CSSProperties}
+                    >
+                        <h3>{mobileAppContent.promoTitle}</h3>
+                        <p>{mobileAppContent.promoDescription}</p>
+                        <StoreBadges />
+                        <a href={MOBILE_APP_DOWNLOAD_PATH}>
+                            {mobileAppContent.promoLinkLabel}
+                            <ArrowRight aria-hidden="true" />
+                        </a>
+                    </div>
                 </div>
 
                 <ul className={styles.channels}>

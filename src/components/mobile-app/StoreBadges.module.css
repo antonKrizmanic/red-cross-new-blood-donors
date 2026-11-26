@@ -1,0 +1,32 @@
+.badges {
+    --badge-height: 3rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: calc(var(--badge-height) / 4);
+}
+
+.badges[data-size="lg"] {
+    --badge-height: 3.5rem;
+}
+
+.badge {
+    display: block;
+    border-radius: 0.5rem;
+    transition: transform 0.3s var(--ease-settle);
+}
+
+.badge img {
+    width: auto;
+    height: var(--badge-height);
+}
+
+.badge:active {
+    transform: scale(0.97);
+}
+
+@media (hover: hover) {
+    .badge:hover {
+        transform: translateY(-3px);
+    }
+}
