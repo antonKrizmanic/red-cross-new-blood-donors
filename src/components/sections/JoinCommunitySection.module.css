@@ -63,6 +63,55 @@
     text-wrap: pretty;
 }
 
+/* The app sits on its own paper card: for donors who already give blood,
+   after the reasons to join. */
+.app {
+    display: grid;
+    justify-items: start;
+    gap: 0.875rem;
+    margin-top: 0.75rem;
+    padding: clamp(1.25rem, 3vw, 2rem);
+    border-radius: var(--radius);
+    background: var(--stone);
+}
+
+.app h3 {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 1.2rem + 1vw, 2rem);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+}
+
+.app p {
+    line-height: 1.45;
+    text-wrap: pretty;
+}
+
+.app > a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35em;
+    min-height: 2.75rem;
+    font-family: var(--font-display);
+    font-size: 1.0625rem;
+    font-weight: 700;
+    text-underline-offset: 0.2em;
+}
+
+.app > a svg {
+    width: 1.1em;
+    height: 1.1em;
+    color: var(--red);
+    transition: transform 0.35s var(--ease-settle);
+}
+
+@media (hover: hover) {
+    .app > a:hover svg {
+        transform: translateX(3px);
+    }
+}
+
 .channels {
     display: grid;
     align-content: start;

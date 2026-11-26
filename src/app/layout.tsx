@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Bricolage_Grotesque, Literata } from 'next/font/google';
+import { APP_STORE_ID } from '@/lib/mobile-app';
 import './globals.css';
 
 const bricolage = Bricolage_Grotesque({
@@ -16,6 +17,7 @@ const literata = Literata({
 
 export const metadata: Metadata = {
     title: 'HCK GDCK Buje – Daruj krv, spasi život',
+    itunes: { appId: APP_STORE_ID },
     description:
         'Stranica Hrvatskog Crvenog križa, Gradskog društva Crvenog križa Buje za promicanje darivanja krvi na području Bujštine (Umag, Buje, Novigrad).',
     keywords: [

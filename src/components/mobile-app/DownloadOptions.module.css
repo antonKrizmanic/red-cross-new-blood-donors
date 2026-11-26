@@ -1,0 +1,108 @@
+.options {
+    display: grid;
+    gap: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.stores {
+    display: grid;
+    justify-items: start;
+    gap: 1.25rem;
+}
+
+.platform {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--red-deep);
+}
+
+.platform svg {
+    width: 1.1em;
+    height: 1.1em;
+}
+
+.links {
+    display: grid;
+    gap: 0.5rem;
+    font-size: 1rem;
+    line-height: 1.4;
+}
+
+.links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35em;
+    min-height: 2.75rem;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
+}
+
+.links svg {
+    flex: none;
+    width: 1.1em;
+    height: 1.1em;
+    color: var(--red);
+    transition: transform 0.35s var(--ease-settle);
+}
+
+@media (hover: hover) {
+    .links a:hover {
+        color: var(--red-deep);
+    }
+
+    .links a:hover svg {
+        transform: translate(2px, -2px);
+    }
+}
+
+.share {
+    background: transparent;
+    cursor: pointer;
+}
+
+.qr {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: center;
+    gap: 1.25rem;
+    max-width: 30rem;
+    margin: 0;
+    padding: 1rem 1.25rem 1rem 1rem;
+    border-radius: var(--radius);
+    background: #fff;
+    box-shadow: 0 0 0 1px var(--line);
+}
+
+.qr img {
+    width: 8.5rem;
+    height: 8.5rem;
+    image-rendering: pixelated;
+}
+
+.qr figcaption {
+    display: grid;
+    gap: 0.25rem;
+    font-size: 1rem;
+    line-height: 1.45;
+    text-wrap: pretty;
+}
+
+.qr strong {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 800;
+    letter-spacing: -0.015em;
+}
+
+/* Before the device is known (and without scripts), a code to scan is only
+   useful on screens wide enough to be a computer. */
+@media (max-width: 55.99rem) {
+    .options[data-platform="unknown"] .qr {
+        display: none;
+    }
+}

@@ -1,0 +1,260 @@
+.header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem 1.5rem;
+    padding-block: 0.75rem;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    font-family: var(--font-display);
+    font-size: 1.0625rem;
+    font-weight: 800;
+    letter-spacing: -0.015em;
+    text-decoration: none;
+}
+
+.brand img {
+    width: 2.75rem;
+    height: 2.75rem;
+}
+
+.home {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    min-height: 2.75rem;
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 600;
+    text-underline-offset: 0.2em;
+}
+
+.home svg {
+    width: 1.1em;
+    height: 1.1em;
+    transition: transform 0.35s var(--ease-settle);
+}
+
+@media (hover: hover) {
+    .home:hover svg {
+        transform: translateX(-3px);
+    }
+}
+
+.hero {
+    display: grid;
+    gap: clamp(3rem, 6vw, 5rem);
+    padding-block: clamp(2rem, 6vw, 5rem) var(--section-space);
+}
+
+.copy {
+    display: grid;
+    align-content: start;
+    gap: clamp(1.25rem, 2.2vw, 1.75rem);
+    min-width: 0;
+}
+
+.eyebrow {
+    font-family: var(--font-display);
+    font-size: 1.0625rem;
+    font-weight: 700;
+    color: var(--red);
+}
+
+.copy h1 {
+    font-size: clamp(3.5rem, 15vw, 9rem);
+    overflow-wrap: anywhere;
+}
+
+.badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.badges li {
+    padding: 0.375rem 0.875rem;
+    border: 2px solid var(--oxblood);
+    border-radius: 999px;
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.25;
+}
+
+.art {
+    position: relative;
+    justify-self: center;
+    width: min(70vw, 20rem);
+}
+
+/* A drop sits behind the phone, as it does behind the home page photograph. */
+.drop {
+    position: absolute;
+    inset: 8% -22% -4%;
+    width: 144%;
+    height: 96%;
+    color: var(--blush);
+    transform: rotate(-6deg);
+}
+
+.phone {
+    position: relative;
+    margin: 0;
+    padding: 0.5rem;
+    border-radius: 2.25rem;
+    background: var(--oxblood);
+    box-shadow: 0 1.5rem 3rem -1.5rem
+        color-mix(in srgb, var(--oxblood) 60%, transparent);
+    transform: rotate(2deg);
+}
+
+.phone img {
+    width: 100%;
+    height: auto;
+    border-radius: 1.75rem;
+}
+
+.features {
+    padding-block: var(--section-space);
+    background: var(--blush);
+}
+
+.featureList {
+    display: grid;
+    gap: 2rem;
+    margin-top: clamp(2rem, 4vw, 3.5rem);
+}
+
+.featureList li {
+    display: grid;
+    gap: 0.5rem;
+    padding-top: 1.25rem;
+    border-top: 2px solid var(--oxblood);
+}
+
+.featureList svg {
+    width: 2rem;
+    height: 2rem;
+    color: var(--red-deep);
+}
+
+.featureList h3 {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+}
+
+.featureList p {
+    line-height: 1.5;
+    text-wrap: pretty;
+}
+
+.access {
+    max-width: 40em;
+    margin-top: clamp(2rem, 4vw, 3rem);
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--ink-soft);
+}
+
+.next {
+    display: block;
+    background: var(--red);
+    color: var(--stone);
+    text-decoration: none;
+    transition: background-color 0.25s;
+}
+
+.nextInner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.25rem 1.5rem;
+    padding-block: 1.25rem;
+    font-family: var(--font-display);
+    line-height: 1.3;
+}
+
+.nextLabel {
+    display: flex;
+    flex-basis: 100%;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.nextDrop {
+    flex: none;
+    width: 0.8em;
+    color: var(--sun);
+}
+
+.nextTitle {
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -0.015em;
+}
+
+.nextArrow {
+    flex: none;
+    width: 1.5rem;
+    height: 1.5rem;
+    transition: transform 0.35s var(--ease-settle);
+}
+
+@media (hover: hover) {
+    .next:hover {
+        background: var(--red-deep);
+    }
+
+    .next:hover .nextArrow {
+        transform: translateX(4px);
+    }
+}
+
+@media (min-width: 40rem) {
+    .featureList {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        column-gap: clamp(2rem, 4vw, 3.5rem);
+    }
+}
+
+@media (min-width: 56rem) {
+    .hero {
+        grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+        align-items: center;
+    }
+
+    .art {
+        width: min(100%, 22rem);
+    }
+
+    .nextInner {
+        flex-wrap: nowrap;
+        gap: 2rem;
+    }
+
+    .nextLabel {
+        flex-basis: auto;
+    }
+
+    .nextArrow {
+        margin-left: auto;
+    }
+}
+
+@media (min-width: 75rem) {
+    .featureList {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
